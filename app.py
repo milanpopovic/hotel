@@ -175,4 +175,4 @@ def edit_room(id):
     return template('templates/edit_room.tpl',**data)
      
      
-run(host='localhost', port=8000)
+run(host='0.0.0.0', port=8000)
