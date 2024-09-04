@@ -173,6 +173,14 @@ def edit_room(id):
     row = cur.fetchone()
     data = {'rowid':row[0],'room_no':row[1],'floor':row[2],'category':row[3],'beds':row[4],'price':row[5],  'status':row[6]}
     return template('templates/edit_room.tpl',**data)
-     
+
+@route('/invoices')
+def invoices():
+    return '<h2>Soon...</h2>'
+
+@route('/reservations')
+def reservations():
+    return '<h2>Soon...</h2>'
+
      
 run(host='0.0.0.0', port=8000)
