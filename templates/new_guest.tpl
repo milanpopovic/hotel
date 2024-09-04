@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
 <div class="container">
 <form method="post" action="/save_guest" onSubmit="return validateForm();">
 <div style="padding-bottom: 18px;font-size : 24px;">New guest</div>
@@ -22,14 +24,10 @@
 <div style="padding-bottom: 18px;">Arrival date<span style="color: red;"> *</span><br/>
 <input type="text" id="arrival_date" name="arrival_date" style="max-width : 250px;" class="form-control"/>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">new Pikaday({ field: document.getElementById('arrival_date') });</script>
 <div style="padding-bottom: 18px;">Departure date<span style="color: red;"> *</span><br/>
 <input type="text" id="departure_date" name="departure_date" style="max-width : 250px;" class="form-control"/>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">new Pikaday({ field: document.getElementById('departure_date') });</script>
 <div style="padding-bottom: 18px;">Number of adults<span style="color: red;"> *</span><br/>
 <input type="number" id="no_adults" name="no_adults" style="max-width : 250px;" class="form-control"/>

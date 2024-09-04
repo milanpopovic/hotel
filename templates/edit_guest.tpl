@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
       function validateForm() {
         if (isEmpty(document.getElementById('room_no').value.trim())) {
