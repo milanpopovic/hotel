@@ -176,11 +176,11 @@ def edit_room(id):
 
 @route('/invoices')
 def invoices():
-    return '<h2>Soon...</h2>'
+    return '<h2>Soon... </h2><a href="/">Back</a>'
 
 @route('/reservations')
 def reservations():
-    return '<h2>Soon...</h2>'
+    return '<h2>Soon... </h2><a href="/">Back</a>'
 
      
 run(host='0.0.0.0', port=8000)
