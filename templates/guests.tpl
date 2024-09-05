@@ -35,6 +35,7 @@
   
   function SelectAction(dropdown)
 {
+    console.log(dropdown);
     if(!SelectedRow){ 
         alert("Select a guest");
         dropdown.selectedIndex = 0;
@@ -44,10 +45,13 @@
     var option_value = dropdown.options[dropdown.selectedIndex].value;
     var option_text = dropdown.options[dropdown.selectedIndex].text;
     //alert('The option value is "' + option_value + '"\nand the text is "' + option_text + '"');
+   
     switch(option_value){
       case 'edit': location.href="/edit_guest/"+SelectedRow;break;
       case 'delete': location.href="/delete_guest/"+SelectedRow;break;
+      case 'checkin': location.href="/checkin/"+SelectedRow;break;
       case 'checkout': location.href="/checkout/"+SelectedRow;break;
+      case 'reservation': location.href="/reservation/"+SelectedRow;break;
       default: break;
     }
     dropdown.selectedIndex = 0;
@@ -63,13 +67,16 @@ function ToggleAction() {
   }
 }
 </script>
+   <h2>{{title}}</h2>
    <a class="button" href="new_guest"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
     <option value="">Actions</option>
-    <option value="edit">Edit guest</option>
-    <option value="delete">Delete guest</option>
-    <option value="checkout">Check out guest</option>
+    <option value="edit">Edit</option>
+    <option value="delete">Delete</option>
+    <option value="checkin">Check-in</option>
+    <option value="checkout">Check-out</option>
+     <option value="reservation">Reservation</option>
    </select>
    </span>
 
@@ -88,10 +95,11 @@ function ToggleAction() {
       <th>No. of adults</th>
       <th>No. of children</th>
       <th>Comment</th>
+      <th>Status</th>
     </tr>
   </thead>
   <tbody>
-    % for rowid,room_no, first_name,last_name,  phone, email,arrival_date, departure_date,no_adults, no_children,comment in guests:
+    % for rowid,room_no, first_name,last_name,  phone, email,arrival_date, departure_date,no_adults, no_children,comment,status in guests:
       <tr onclick="highlight(this);">
       <td style="display:none;">{{rowid}}</td>
       <td>{{room_no}}</td>
@@ -104,6 +112,7 @@ function ToggleAction() {
       <td>{{no_adults}}</td>
       <td>{{no_children}}</td>
       <td>{{comment}}</td>
+      <td>{{status}}</td>
       </tr>
     % end
   </tbody>

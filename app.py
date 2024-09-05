@@ -40,11 +40,11 @@ def new_guest():
 @route('/edit_guest/<id:int>')
 def edit_guest(id):
     sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email,arrival_date,
-        departure_date,no_adults, no_children,comment FROM guest where rowid={}'''.format(id)
+        departure_date,no_adults, no_children,comment,status FROM guest where rowid={}'''.format(id)
     rows = cur.execute(sql)
     row = cur.fetchone()
     data = {'rowid':row[0],'room_no':row[1],'first_name':row[2],'last_name':row[3],  'phone':row[4], 'email':row[5],
-            'arrival_date':row[6],'departure_date':row[7],'no_adults':row[8], 'no_children':row[9],'comment':row[10]}
+            'arrival_date':row[6],'departure_date':row[7],'no_adults':row[8], 'no_children':row[9],'comment':row[10],'status':row[11]}
     return template('templates/edit_guest.tpl',**data)
 
 @post('/save_guest')
@@ -59,21 +59,16 @@ def save_guest():
     adults = request.forms.get('no_adults')
     children = request.forms.get('no_children')
     comment = request.forms.get('comment')
+    status = request.forms.get('status')
     cur.execute('''INSERT into guest (room_no,first_name,last_name,  phone, email,
-                arrival_date, departure_date,no_adults, no_children,comment) VALUES (?,?,?,?,?,?,?,?,?,?)''',\
-                (room_no,first_name,last_name,phone,email,arrival_date,departure_date,adults,children,comment))
+                arrival_date, departure_date,no_adults, no_children,comment,status) VALUES (?,?,?,?,?,?,?,?,?,?,?)''',\
+                (room_no,first_name,last_name,phone,email,arrival_date,departure_date,adults,children,comment,status))
     con.commit()
     redirect('/guests')
 
-def all_guests(status='active'):
-    guests = []
-    for row in cur.execute('''SELECT rowid,room_no,first_name,last_name,  phone, email,arrival_date,
-        departure_date,no_adults, no_children,comment FROM guest ORDER BY room_no'''): 
-        guests.append(row)
-    return guests
-
 @post('/update_guest')
 def update_guest():
+    
     rowid= request.forms.get('rowid')
     room_no = request.forms.get('room_no')
     first_name = request.forms.get('first_name')
@@ -85,38 +80,55 @@ def update_guest():
     adults = request.forms.get('no_adults')
     children = request.forms.get('no_children')
     comment = request.forms.get('comment')
-    cur.execute('''UPDATE guest set room_no=?, first_name=?, last_name=?, phone=?, email=?, arrival_date=?,
-                    departure_date=?, no_adults=?, no_children=?, comment=? where rowid=?''',\
-                (room_no,first_name,last_name,phone,email,arrival_date,departure_date,adults,children,comment,rowid))
+    status = request.forms.get('status')
+    
+    cur.execute('''UPDATE guest set room_no=?, first_name=?, last_name=?, phone=?, email=?, arrival_date=?,\
+                    departure_date=?, no_adults=?, no_children=?, comment=?, status=? where rowid=?''',\
+                (room_no,first_name,last_name,phone,email,arrival_date,departure_date,adults,children,comment,status,rowid))
     con.commit()
     redirect('/guests')
 
-@route('/delete_guest/<id:int>')
+@route('/delete_guest/<id>')
 def delete_guest(id):
     sql='DELETE from guest where rowid={}'.format(id)
     cur.execute(sql)
     con.commit()
-    redirect('/guests')
-     
-@route('/guests')
-def get_all_guests():
-    
-    return template('templates/guests.html', guests=all_guests())
+    redirect('/guests/Checked-in')
 
-@route('/checkin')
-def check_in():
-    return template('templates/check_in.tpl')
+def all_guests(status):
+    guests = []
+    sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email,arrival_date,departure_date,
+            no_adults, no_children,comment,status  FROM guest where status="{}" ORDER BY room_no'''.format(status)
+    rows = cur.execute(sql)
+    for row in rows: 
+        guests.append(row)
+    return guests
+
+@route('/guests/<status>')
+def get_all_guests(status):
+##    print(all_guests(status))
+##    data = {'title':status,'rows':all_guests(status)}
+##    return template('templates/guests.tpl', **data)
+    return template('templates/guests.tpl', title=status, guests=all_guests(status))
+
+@route('/checkin/<id>')
+def checkin(id):
+    sql='''UPDATE guest set status="Checked-in" where rowid={}'''.format(id)
+    cur.execute(sql)
+    redirect('/guests/Checked-in')
 
 @route('/checkout/<id>')
-def check_in(id):
-    sql = '''SELECT room_no,first_name,last_name,  phone, email,arrival_date,
-        departure_date,no_adults, no_children,comment FROM guest where rowid={}'''.format(id)
-    rows = cur.execute(sql)
-    row = cur.fetchone()
-    data = {'room_no':row[0],'first_name':row[1],'last_name':row[2],  'phone':row[3], 'email':row[4],
-            'arrival_date':row[5],'departure_date':row[6]}
-    return template('templates/checkout.tpl', **data)
+def checkout(id):
+    sql='''UPDATE guest set status="Checked-out" where rowid={}'''.format(id)
+    cur.execute(sql)
+    redirect('/guests/Checked-out')
 
+
+@route('/reservation/<id>')
+def reservation(id):
+    sql='''UPDATE guest set status="Reservation" where rowid={}'''.format(id)
+    cur.execute(sql)
+    redirect('/guests/Reservation')                           
 
 @route('/new_room')
 def new_room():
@@ -166,21 +178,21 @@ def update_room():
     con.commit()
     redirect('/rooms')
 
-@route('/edit_room/<id:int>')
+@route('/edit_room/<id>')
 def edit_room(id):
-    sql = '''SELECT rowid,room_no, floor, category, beds, price, status FROM room where rowid={}'''.format(id)
-    rows = cur.execute(sql)
+    rows = cur.execute('''SELECT rowid,room_no, floor, category, beds, price, status FROM room where rowid=?''',(id))
     row = cur.fetchone()
     data = {'rowid':row[0],'room_no':row[1],'floor':row[2],'category':row[3],'beds':row[4],'price':row[5],  'status':row[6]}
     return template('templates/edit_room.tpl',**data)
 
 @route('/invoices')
 def invoices():
-    return '<h2>Soon... </h2><a href="/">Back</a>'
-
+    return template('templates/guests.tpl', guests=all_guests('Checked-out'))
+    
 @route('/reservations')
 def reservations():
-    return '<h2>Soon... </h2><a href="/">Back</a>'
+    return template('templates/guests.tpl', guests=all_guests('Reservations'))
+ 
 
      
 run(host='0.0.0.0', port=8000)

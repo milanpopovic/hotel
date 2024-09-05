@@ -38,6 +38,12 @@
 <div style="padding-bottom: 18px;">Questions / Comments<br/>
 <textarea id="comment" false name="comment" style="max-width : 450px;" rows="6" class="form-control"></textarea>
 </div>
+<label for="status">Status</label>
+<select id="status" name="status">
+  <option value="Checked-in">Checked-in</option>
+  <option value="Checked-out">Checked-out</option>
+  <option value="Reservation">Reservation</option>
+</select>
 <div style="padding-bottom: 18px;">
 	<input name="skip_Submit" value="Submit" type="submit"/>
 	<input type="button" value="Cancel" onclick="history.back()"/>

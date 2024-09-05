@@ -46,6 +46,11 @@
         var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,15}(?:\.[a-z]{2})?)$/i;
         return isEmpty(email) || re.test(email);
       }
+      function selectElement(id, valueToSelect) {    
+          let element = document.getElementById(id);
+          element.value = valueToSelect;
+      }
+      selectElement('status', '{{status}}');
 </script>
 <div class="container">
 <form method="post" action="/update_guest" onSubmit="return validateForm();">
@@ -87,6 +92,12 @@
 <div style="padding-bottom: 18px;">Questions / Comments<br/>
 <textarea id="comment" name="comment" style="max-width : 450px;" rows="6" class="form-control">{{comment}}</textarea>
 </div>
+<label for="status">Status</label>
+<select id="status" name="status">
+  <option value="Checked-in">Checked-in</option>
+  <option value="Checked-out">Checked-out</option>
+  <option value="Reservation">Reservation</option>
+</select>
 <div style="padding-bottom: 18px;">
 	<input name="skip_Submit" value="Submit" type="submit"/>
 	<input type="button" value="Cancel" onclick="history.back()"/>

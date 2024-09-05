@@ -23,7 +23,7 @@
     <input type="text" placeholder="No. of beds" id="beds" name="beds">
     <label for="price">Price per day</label>
     <input placeholder="price per day" id="price" name="price"></input>
-    <label for="status"></label>
+    <label for="status">Status</label>
     <select id="status" name="status">
       <option value="Vacant">Vacant</option>
       <option value="Occupied">Occupied</option>
