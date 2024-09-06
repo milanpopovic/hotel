@@ -2,7 +2,7 @@
 
 <div class="container">
 <form method="post" action="/update_room" onSubmit="return validateForm();">
-  <div style="padding-bottom: 18px;font-size : 24px;">Edit Room</div>
+  <div style="padding-bottom: 18px;font-size : 24px;">View/Edit Room</div>
   <fieldset>
     <div style="display:none">
     <input type="text" id="rowid" name="rowid" value={{rowid}} style="max-width : 450px;" class="form-control"/>

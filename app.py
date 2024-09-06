@@ -1,8 +1,8 @@
-from bottle import route, run, template, static_file
-from bottle import get, post, request, redirect
+from bottle.bottle import route, run, template, static_file
+from bottle.bottle import get, post, request, redirect
 import sqlite3
 
-con = sqlite3.connect('hotel.db')
+con = sqlite3.connect('database/hotel.db')
 cur = con.cursor()
 
 GUEST = ['room_no','first_name','last_name','phone,email', 'city','address','country','arrival_date',
