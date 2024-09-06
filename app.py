@@ -64,7 +64,8 @@ def save_guest():
                 arrival_date, departure_date,no_adults, no_children,comment,status) VALUES (?,?,?,?,?,?,?,?,?,?,?)''',\
                 (room_no,first_name,last_name,phone,email,arrival_date,departure_date,adults,children,comment,status))
     con.commit()
-    redirect('/guests')
+    redirect('/guests'+'/'+status)
+
 
 @post('/update_guest')
 def update_guest():
