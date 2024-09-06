@@ -5,6 +5,10 @@ import sqlite3
 con = sqlite3.connect('hotel.db')
 cur = con.cursor()
 
+GUEST = ['room_no','first_name','last_name','phone,email', 'city','address','country','arrival_date',
+        'departure_date','no_adults','no_children','comment','status']
+ROOM = ['room_no', 'floor', 'category', 'beds', 'price', 'status']
+
 @route('/admin')
 def admin():
     return template('templates/admin.html')
@@ -16,21 +20,18 @@ def index():
                     
 @route('/help')
 def help():
-    return '''
-       <br>/help
-       <br>/create_tables
-       <br>/new_guest/guest_name/room_no
-       <br>/get_all_guests
-       <br>
-       '''
+    return '''<br>/help<br>/create_tables<br>/new_guest/guest_name/room_no<br>/get_all_guests<br>'''
+
 @route('/static/:path#.+#', name='static')
 def static(path):
     return static_file(path, root='static')
 
-@route('/create_tables')
-def create_db():
+@route('/create_database/<name>')
+def create_db(name):
+    con = sqlite3.connect('hotel.db')
+    cur = con.cursor()
     cur.execute("CREATE TABLE room(room_no, floor, category, beds, price, status)")
-    cur.execute("CREATE TABLE guest(room_no,first_name,last_name,phone, email,\
+    cur.execute("CREATE TABLE guest(room_no,first_name,last_name,phone, email,city,address,country,\
                 arrival_date, departure_date,no_adults, no_children,comment)")
 
 @route('/new_guest')
