@@ -106,9 +106,6 @@ def all_guests(status):
 
 @route('/guests/<status>')
 def get_all_guests(status):
-##    print(all_guests(status))
-##    data = {'title':status,'rows':all_guests(status)}
-##    return template('templates/guests.tpl', **data)
     return template('templates/guests.tpl', title=status, guests=all_guests(status))
 
 @route('/checkin/<id>')

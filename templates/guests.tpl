@@ -69,7 +69,7 @@ function ToggleAction() {
 }
 </script>
    <h2>{{title}}</h2>
-   <a class="button" href="new_guest"><span class="pln">New</span></a> 
+   <a class="button" href="/new_guest"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
     <option value="">Actions</option>
