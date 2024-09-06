@@ -73,7 +73,7 @@ function ToggleAction() {
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
     <option value="">Actions</option>
-    <option value="edit">Edit</option>
+    <option value="edit">View/Edit</option>
     <option value="delete">Delete</option>
     <option value="invoice">Invoice</option>
     <!--
@@ -103,7 +103,7 @@ function ToggleAction() {
     </tr>
   </thead>
   <tbody>
-    % for rowid,room_no, first_name,last_name,  phone, email,arrival_date, departure_date,no_adults, no_children,comment,status in guests:
+    % for rowid,room_no, first_name,last_name,  phone, email,city,address,country, arrival_date, departure_date,no_adults, no_children,comment,status in guests:
       <tr onclick="highlight(this);">
       <td style="display:none;">{{rowid}}</td>
       <td>{{room_no}}</td>

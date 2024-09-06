@@ -39,12 +39,12 @@ def new_guest():
 
 @route('/edit_guest/<id:int>')
 def edit_guest(id):
-    sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email,arrival_date,
-        departure_date,no_adults, no_children,comment,status FROM guest where rowid={}'''.format(id)
+    sql = '''SELECT rowid,room_no,first_name,last_name,phone,email, city,address,country,arrival_date,
+        departure_date,no_adults,no_children,comment,status FROM guest where rowid={}'''.format(id)
     rows = cur.execute(sql)
     row = cur.fetchone()
-    data = {'rowid':row[0],'room_no':row[1],'first_name':row[2],'last_name':row[3],  'phone':row[4], 'email':row[5],
-            'arrival_date':row[6],'departure_date':row[7],'no_adults':row[8], 'no_children':row[9],'comment':row[10],'status':row[11]}
+    data = {'rowid':row[0],'room_no':row[1],'first_name':row[2],'last_name':row[3],  'phone':row[4], 'email':row[5], 'city':row[6], 'address':row[7], 'country':row[8],
+            'arrival_date':row[9],'departure_date':row[10],'no_adults':row[11], 'no_children':row[12],'comment':row[13],'status':row[14]}
     return template('templates/edit_guest.tpl',**data)
 
 @post('/save_guest')
@@ -54,15 +54,18 @@ def save_guest():
     last_name = request.forms.get('last_name')
     phone = request.forms.get('phone')
     email = request.forms.get('email')
+    city = request.forms.get('city')
+    address = request.forms.get('address')
+    country = request.forms.get('country')
     arrival_date = request.forms.get('arrival_date')
     departure_date = request.forms.get('departure_date')
     adults = request.forms.get('no_adults')
     children = request.forms.get('no_children')
     comment = request.forms.get('comment')
     status = request.forms.get('status')
-    cur.execute('''INSERT into guest (room_no,first_name,last_name,  phone, email,
-                arrival_date, departure_date,no_adults, no_children,comment,status) VALUES (?,?,?,?,?,?,?,?,?,?,?)''',\
-                (room_no,first_name,last_name,phone,email,arrival_date,departure_date,adults,children,comment,status))
+    cur.execute('''INSERT into guest (room_no,first_name,last_name,  phone, email,city,address,country,
+                arrival_date, departure_date,no_adults, no_children,comment,status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',\
+                (room_no,first_name,last_name,phone,email,city,address,country,arrival_date,departure_date,adults,children,comment,status))
     con.commit()
     redirect('/guests'+'/'+status)
 
@@ -76,6 +79,9 @@ def update_guest():
     last_name = request.forms.get('last_name')
     phone = request.forms.get('phone')
     email = request.forms.get('email')
+    city = request.forms.get('city')
+    address = request.forms.get('address')
+    country = request.forms.get('country')
     arrival_date = request.forms.get('arrival_date')
     departure_date = request.forms.get('departure_date')
     adults = request.forms.get('no_adults')
@@ -83,9 +89,9 @@ def update_guest():
     comment = request.forms.get('comment')
     status = request.forms.get('status')
     
-    cur.execute('''UPDATE guest set room_no=?, first_name=?, last_name=?, phone=?, email=?, arrival_date=?,\
+    cur.execute('''UPDATE guest set room_no=?, first_name=?, last_name=?, phone=?, email=?, city=?, address=?, country=?, arrival_date=?,\
                     departure_date=?, no_adults=?, no_children=?, comment=?, status=? where rowid=?''',\
-                (room_no,first_name,last_name,phone,email,arrival_date,departure_date,adults,children,comment,status,rowid))
+                (room_no,first_name,last_name,phone,email,city,address,country,arrival_date,departure_date,adults,children,comment,status,rowid))
     con.commit()
     redirect('/guests'+'/'+status)
 
@@ -98,7 +104,7 @@ def delete_guest(id):
 
 def all_guests(status):
     guests = []
-    sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email,arrival_date,departure_date,
+    sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email,city,address,country,arrival_date,departure_date,
             no_adults, no_children,comment,status  FROM guest where status="{}" ORDER BY room_no'''.format(status)
     rows = cur.execute(sql)
     for row in rows: 
@@ -123,12 +129,12 @@ def checkout(id):
 
 @route('/invoice/<id>')
 def checkout(id):
-    sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email,arrival_date,
+    sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email, city, address, country, arrival_date,
         departure_date,no_adults, no_children,comment,status FROM guest where rowid={}'''.format(id)
     rows = cur.execute(sql)
     row = cur.fetchone()
-    data = {'rowid':row[0],'room_no':row[1],'first_name':row[2],'last_name':row[3],  'phone':row[4], 'email':row[5],
-            'arrival_date':row[6],'departure_date':row[7],'no_adults':row[8], 'no_children':row[9],'comment':row[10],'status':row[11]}
+    data = {'rowid':row[0],'room_no':row[1],'first_name':row[2],'last_name':row[3],  'phone':row[4], 'email':row[5],'city':row[6],'address':row[7],'country':row[8],
+            'arrival_date':row[9],'departure_date':row[10],'no_adults':row[11], 'no_children':row[12],'comment':row[13],'status':row[14]}
     return template('templates/invoice.tpl',**data)
 
 
