@@ -10,6 +10,12 @@
 <div style=" margin-left: 0; margin-right: 1%; width: 49%;">Room number<span style="color:red;"> *</span><br/>
 	<input type="text" id="room_no" name="room_no" value={{room_no}} style="max-width: 30%;" class="form-control"/>
 </div>
+<label for="status">Status</label>
+<select id="status" name="status">
+  <option value="Checked-in">Checked-in</option>
+  <option value="Checked-out">Checked-out</option>
+  <option value="Reservation">Reservation</option>
+</select>
 <div style="display: flex; padding-bottom: 18px;max-width : 450px;">
 	<div style=" margin-left: 0; margin-right: 1%; width: 49%;">First name<span style="color: red;"> *</span><br/>
 		<input type="text" id="first_name" name="first_name" value={{first_name}} style="max-width: 100%;" class="form-control"/>
@@ -41,12 +47,7 @@
 <div style="padding-bottom: 18px;">Questions / Comments<br/>
 <textarea id="comment" name="comment" style="max-width : 450px;" rows="6" class="form-control">{{comment}}</textarea>
 </div>
-<label for="status">Status</label>
-<select id="status" name="status">
-  <option value="Checked-in">Checked-in</option>
-  <option value="Checked-out">Checked-out</option>
-  <option value="Reservation">Reservation</option>
-</select>
+
 <div style="padding-bottom: 18px;">
 	<input name="skip_Submit" value="Submit" type="submit"/>
 	<input type="button" value="Cancel" onclick="history.back()"/>
