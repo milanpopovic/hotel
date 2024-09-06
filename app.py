@@ -86,7 +86,7 @@ def update_guest():
                     departure_date=?, no_adults=?, no_children=?, comment=?, status=? where rowid=?''',\
                 (room_no,first_name,last_name,phone,email,arrival_date,departure_date,adults,children,comment,status,rowid))
     con.commit()
-    redirect('/guests')
+    redirect('/guests'+'/'+status)
 
 @route('/delete_guest/<id>')
 def delete_guest(id):

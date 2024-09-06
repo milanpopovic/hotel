@@ -1,57 +1,6 @@
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-      function validateForm() {
-        if (isEmpty(document.getElementById('room_no').value.trim())) {
-        alert('Room number is required!');
-        return false;
-        }
-        if (isEmpty(document.getElementById('first_name').value.trim())) {
-        alert('First name is required!');
-        return false;
-        }
-        if (isEmpty(document.getElementById('last_name').value.trim())) {
-        alert('Last name is required!');
-        return false;
-        }
-        if (isEmpty(document.getElementById('phone').value.trim())) {
-        alert('Phone is required!');
-        return false;
-        }
-        if (isEmpty(document.getElementById('email').value.trim())) {
-        alert('Email is required!');
-        return false;
-        }
-        if (!validateEmail(document.getElementById('email').value.trim())) {
-        alert('Email must be a valid email address!');
-        return false;
-        }
-        if (isEmpty(document.getElementById('arrival_date').value.trim())) {
-        alert('Arrival date is required!');
-        return false;
-        }
-        if (isEmpty(document.getElementById('departure_date').value.trim())) {
-        alert('Departure date is required!');
-        return false;
-        }
-        if (isEmpty(document.getElementById('no_adults').value.trim())) {
-        alert('Number of adults is required!');
-        return false;
-        }
-        return true;
-        }
-      function isEmpty(str) { return (str.length === 0 || !str.trim()); }
-      function validateEmail(email) {
-        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,15}(?:\.[a-z]{2})?)$/i;
-        return isEmpty(email) || re.test(email);
-      }
-      function selectElement(id, valueToSelect) {    
-          let element = document.getElementById(id);
-          element.value = valueToSelect;
-      }
-      selectElement('status', '{{status}}');
-</script>
 <div class="container">
 <form method="post" action="/update_guest" onSubmit="return validateForm();">
 <div style="padding-bottom: 18px;font-size : 24px;">Guest edit</div>
@@ -104,4 +53,55 @@
 </div>
 </form>
 </div>
+<script type="text/javascript">
+      function validateForm() {
+        if (isEmpty(document.getElementById('room_no').value.trim())) {
+        alert('Room number is required!');
+        return false;
+        }
+        if (isEmpty(document.getElementById('first_name').value.trim())) {
+        alert('First name is required!');
+        return false;
+        }
+        if (isEmpty(document.getElementById('last_name').value.trim())) {
+        alert('Last name is required!');
+        return false;
+        }
+        if (isEmpty(document.getElementById('phone').value.trim())) {
+        alert('Phone is required!');
+        return false;
+        }
+        if (isEmpty(document.getElementById('email').value.trim())) {
+        alert('Email is required!');
+        return false;
+        }
+        if (!validateEmail(document.getElementById('email').value.trim())) {
+        alert('Email must be a valid email address!');
+        return false;
+        }
+        if (isEmpty(document.getElementById('arrival_date').value.trim())) {
+        alert('Arrival date is required!');
+        return false;
+        }
+        if (isEmpty(document.getElementById('departure_date').value.trim())) {
+        alert('Departure date is required!');
+        return false;
+        }
+        if (isEmpty(document.getElementById('no_adults').value.trim())) {
+        alert('Number of adults is required!');
+        return false;
+        }
+        return true;
+        }
+      function isEmpty(str) { return (str.length === 0 || !str.trim()); }
+      function validateEmail(email) {
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,15}(?:\.[a-z]{2})?)$/i;
+        return isEmpty(email) || re.test(email);
+      }
+      function selectElement(id, valueToSelect) {    
+          let element = document.getElementById(id);
+          element.value = valueToSelect;
+      }
+      selectElement('status', '{{status}}');
+</script>
 
