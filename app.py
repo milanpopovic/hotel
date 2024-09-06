@@ -180,7 +180,8 @@ def update_room():
 
 @route('/edit_room/<id>')
 def edit_room(id):
-    rows = cur.execute('''SELECT rowid,room_no, floor, category, beds, price, status FROM room where rowid=?''',(id))
+    sql='''SELECT rowid,room_no, floor, category, beds, price, status FROM room where rowid={}'''.format(id) 
+    rows = cur.execute(sql)
     row = cur.fetchone()
     data = {'rowid':row[0],'room_no':row[1],'floor':row[2],'category':row[3],'beds':row[4],'price':row[5],  'status':row[6]}
     return template('templates/edit_room.tpl',**data)
