@@ -123,6 +123,16 @@ def checkout(id):
     cur.execute(sql)
     redirect('/guests/Checked-out')
 
+@route('/invoice/<id>')
+def checkout(id):
+    sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email,arrival_date,
+        departure_date,no_adults, no_children,comment,status FROM guest where rowid={}'''.format(id)
+    rows = cur.execute(sql)
+    row = cur.fetchone()
+    data = {'rowid':row[0],'room_no':row[1],'first_name':row[2],'last_name':row[3],  'phone':row[4], 'email':row[5],
+            'arrival_date':row[6],'departure_date':row[7],'no_adults':row[8], 'no_children':row[9],'comment':row[10],'status':row[11]}
+    return template('templates/invoice.tpl',**data)
+
 
 @route('/reservation/<id>')
 def reservation(id):

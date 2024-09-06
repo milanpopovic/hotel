@@ -52,6 +52,7 @@
       case 'checkin': location.href="/checkin/"+SelectedRow;break;
       case 'checkout': location.href="/checkout/"+SelectedRow;break;
       case 'reservation': location.href="/reservation/"+SelectedRow;break;
+      case 'invoice': location.href="/invoice/"+SelectedRow;break;
       default: break;
     }
     dropdown.selectedIndex = 0;
@@ -74,9 +75,12 @@ function ToggleAction() {
     <option value="">Actions</option>
     <option value="edit">Edit</option>
     <option value="delete">Delete</option>
+    <option value="invoice">Invoice</option>
+    <!--
     <option value="checkin">Check-in</option>
     <option value="checkout">Check-out</option>
-     <option value="reservation">Reservation</option>
+    <option value="reservation">Reservation</option>
+    -->
    </select>
    </span>
 
