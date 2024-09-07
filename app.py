@@ -1,6 +1,7 @@
 from bottle.bottle import route, run, template, static_file
 from bottle.bottle import get, post, request, redirect
 import sqlite3
+import datetime
 
 con = sqlite3.connect('database/hotel.db')
 cur = con.cursor()
@@ -128,14 +129,38 @@ def checkout(id):
     cur.execute(sql)
     redirect('/guests/Checked-out')
 
+def convert_date(date):
+    months={'Jan':'01','Feb':'02','Mar':'03','Apr':'04','May':'05','Jun':'06','Jul':'07','Aug':'08','Sep':'09','Oct':'10','Nov':'11','Dec':'12'}
+    parts=date.split()
+    month = months[parts[1]]
+    return (int(parts[3]), int(month), int(parts[2]))
+
+def days_between(d1, d2):
+    date1 = datetime.datetime(d1[0], d1[1], d1[2])
+    date2 = datetime.datetime(d2[0], d2[1], d2[2])
+    return abs((date2 - date1).days)
+                              
 @route('/invoice/<id>')
 def checkout(id):
     sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email, city, address, country, arrival_date,
         departure_date,no_adults, no_children,comment,status FROM guest where rowid={}'''.format(id)
     rows = cur.execute(sql)
     row = cur.fetchone()
+
+    sql = '''SELECT price FROM room where room_no="{}"'''.format(row[1])
+    print(sql)
+    rooms = cur.execute(sql)
+    room=cur.fetchone()
+    price = float(room[0].replace(',','.'))
+    
+    arrival = convert_date(row[9])
+    departure = convert_date(row[10])
+    days = days_between(departure, arrival)
+    total = days*price
+    vat = total*0.2
+    print(arrival,departure,days,total,vat)
     data = {'rowid':row[0],'room_no':row[1],'first_name':row[2],'last_name':row[3],  'phone':row[4], 'email':row[5],'city':row[6],'address':row[7],'country':row[8],
-            'arrival_date':row[9],'departure_date':row[10],'no_adults':row[11], 'no_children':row[12],'comment':row[13],'status':row[14]}
+            'arrival_date':row[9],'departure_date':row[10],'no_adults':row[11], 'no_children':row[12],'comment':row[13],'status':row[14], 'days':days,'price':price,'total':total,'vat':vat}
     return template('templates/invoice.tpl',**data)
 
 

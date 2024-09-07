@@ -20,19 +20,19 @@
 <tr>
 <td>{{arrival_date}}</td>
 <td>{{departure_date}}</td>
-<td>5</td>
-<td>120</td>
-<td>600</td>
+<td>{{days}}</td>
+<td>{{price}}</td>
+<td>{{total}}</td>
 </tr>
 <tr>
 <td colspan=3></td>
-<td>VAT</td>
-<td>120</td>
+<td>VAT (20%)</td>
+<td>{{vat}}</td>
 </tr>
 <tr>
 <td colspan=3></td>
 <td>TOTAL</td>
-<td>600</td>
+<td>{{total}}</td>
 </tr>
 </table>
 <div>
