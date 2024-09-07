@@ -5,6 +5,7 @@
 			<li class="navigation_item"><a href = '/guests/Checked-out'>Checked-out</a></li>
 			<li class="navigation_item"><a href = '/guests/Reservation'>Reservations</a></li>
 			<li class="navigation_item"><a href = '/rooms'>Rooms</a></li>
+			<li class="navigation_item"><a href = '/edit_setup'>Setup</a></li>
 		</ul>
 	</nav>
 	

@@ -10,17 +10,37 @@ GUEST = ['room_no','first_name','last_name','phone,email', 'city','address','cou
         'departure_date','no_adults','no_children','comment','status']
 ROOM = ['room_no', 'floor', 'category', 'beds', 'price', 'status']
 
-hotel = json.load(open('hotel.json'))
-hotel_name = hotel['name']
-hotel_logo = hotel['logo']
-hotel_address = hotel['address']
-hotel_country = hotel['country']
-hotel_phone = hotel['phone']
-hotel_email = hotel['email']
+hotel = {}
+
+def read_setup():
+    global hotel
+    f = open('setup.json')
+    hotel = json.load(f)
+    f.close()
 
 @route('/admin')
 def admin():
     return template('templates/admin.html')
+
+@route('/edit_setup')
+def edit_setup():
+    read_setup();
+    return template('templates/edit_setup.tpl',**hotel)
+
+@post('/save_setup')
+def save_setup():
+    name = request.forms.get('name')
+    logo = request.forms.get('logo')
+    address = request.forms.get('address')
+    country = request.forms.get('country')
+    phone = request.forms.get('phone')
+    email = request.forms.get('email')
+    json_string = json.dumps({'name':name,'logo':logo,'address':address,'country':country,'phone':phone,'email':email})
+    f = open('setup.json','w')
+    f.write(json_string)
+    f.close()
+    read_setup()
+    redirect('/')
 
 @route('/')
 @route('/index')
@@ -149,7 +169,7 @@ def days_between(d1, d2):
     return abs((date2 - date1).days)
                               
 @route('/invoice/<id>')
-def checkout(id):
+def invoice(id):
     sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email, city, address, country, arrival_date,
         departure_date,no_adults, no_children,comment,status FROM guest where rowid={}'''.format(id)
     rows = cur.execute(sql)
@@ -157,6 +177,9 @@ def checkout(id):
     sql = '''SELECT price FROM room where room_no="{}"'''.format(row[1])
     rooms = cur.execute(sql)
     room=cur.fetchone()
+    if not room:
+        message='Room {} does not exist'.format(row[1])
+        return template('templates/error_message.tpl',message=message)
     price = float(room[0].replace(',','.'))
     arrival = convert_date(row[9])
     departure = convert_date(row[10])
@@ -165,7 +188,7 @@ def checkout(id):
     vat = total*0.2
     data = {'rowid':row[0],'room_no':row[1],'first_name':row[2],'last_name':row[3],  'phone':row[4], 'email':row[5],'city':row[6],'address':row[7],'country':row[8],
             'arrival_date':row[9],'departure_date':row[10],'no_adults':row[11], 'no_children':row[12],'comment':row[13],'status':row[14],
-            'days':days,'price':price,'total':total,'vat':vat,'hotel_name':hotel_name,'hotel_logo':hotel_logo,"hotel_address":hotel_address,"hotel_country":hotel_country,"hotel_phone":hotel_phone,"hotel_email":hotel_email}
+            'days':days,'price':price,'total':total,'vat':vat,'hotel_name':hotel['name'],'hotel_logo':hotel['logo'],"hotel_address":hotel['address'],"hotel_country":hotel['country'],"hotel_phone":hotel['phone'],"hotel_email":hotel['email']}
     return template('templates/invoice.tpl',**data)
 
 @route('/reservation/<id>')
@@ -239,5 +262,5 @@ def reservations():
     return template('templates/guests.tpl', guests=all_guests('Reservations'))
  
 
-     
+read_setup()     
 run(host='0.0.0.0', port=8000)
