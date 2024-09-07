@@ -1,7 +1,7 @@
 from bottle.bottle import route, run, template, static_file
 from bottle.bottle import get, post, request, redirect
 import sqlite3
-import datetime
+import datetime, json
 
 con = sqlite3.connect('database/hotel.db')
 cur = con.cursor()
@@ -9,6 +9,14 @@ cur = con.cursor()
 GUEST = ['room_no','first_name','last_name','phone,email', 'city','address','country','arrival_date',
         'departure_date','no_adults','no_children','comment','status']
 ROOM = ['room_no', 'floor', 'category', 'beds', 'price', 'status']
+
+hotel = json.load(open('hotel.json'))
+hotel_name = hotel['name']
+hotel_logo = hotel['logo']
+hotel_address = hotel['address']
+hotel_country = hotel['country']
+hotel_phone = hotel['phone']
+hotel_email = hotel['email']
 
 @route('/admin')
 def admin():
@@ -146,23 +154,19 @@ def checkout(id):
         departure_date,no_adults, no_children,comment,status FROM guest where rowid={}'''.format(id)
     rows = cur.execute(sql)
     row = cur.fetchone()
-
     sql = '''SELECT price FROM room where room_no="{}"'''.format(row[1])
-    print(sql)
     rooms = cur.execute(sql)
     room=cur.fetchone()
     price = float(room[0].replace(',','.'))
-    
     arrival = convert_date(row[9])
     departure = convert_date(row[10])
     days = days_between(departure, arrival)
     total = days*price
     vat = total*0.2
-    print(arrival,departure,days,total,vat)
     data = {'rowid':row[0],'room_no':row[1],'first_name':row[2],'last_name':row[3],  'phone':row[4], 'email':row[5],'city':row[6],'address':row[7],'country':row[8],
-            'arrival_date':row[9],'departure_date':row[10],'no_adults':row[11], 'no_children':row[12],'comment':row[13],'status':row[14], 'days':days,'price':price,'total':total,'vat':vat}
+            'arrival_date':row[9],'departure_date':row[10],'no_adults':row[11], 'no_children':row[12],'comment':row[13],'status':row[14],
+            'days':days,'price':price,'total':total,'vat':vat,'hotel_name':hotel_name,'hotel_logo':hotel_logo,"hotel_address":hotel_address,"hotel_country":hotel_country,"hotel_phone":hotel_phone,"hotel_email":hotel_email}
     return template('templates/invoice.tpl',**data)
-
 
 @route('/reservation/<id>')
 def reservation(id):

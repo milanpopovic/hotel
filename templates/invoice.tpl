@@ -10,9 +10,9 @@
 	</div>
 	<div class="row">
 	    <div class="column">
-	       <h3>Hotel Royal Palace</h3>
-	       <p>23 Broadway, New York, New York<br>
-	       Phone 1-812-345 Email: royalpalace@us.com</p>
+	       <h3>Hotel {{hotel_name}}</h3>
+	       <p>{{hotel_address}},{{hotel_country}}<br>
+	       Phone {{hotel_phone}} Email: {{hotel_email}}</p>
 	    </div>
 		<div class="column">
 			<h3>{{first_name}} {{last_name}}</h3>
