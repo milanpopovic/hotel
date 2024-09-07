@@ -52,7 +52,7 @@
 	</div>
 	<div class="row">
 	    <div class="column">
-		<h3>THANK YOU FOR USING OUR SERVICES</h3>
+		<h5>THANK YOU FOR USING OUR SERVICES</h5>
 		<p><b>Invoice Terms:</b></p>
 		</div>
 	</div>
