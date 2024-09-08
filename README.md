@@ -1,6 +1,6 @@
 Prerequisite: Python3
 
-Clone this repository to a local folder (ex. hotel)
+Clone this repository to a local folder (e.g. hotel)
 
 $ cd hotel
 
