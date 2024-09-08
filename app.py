@@ -16,6 +16,30 @@ ROOM = ['room_no', 'floor', 'category', 'beds', 'price', 'status']
 
 hotel = {}
 
+@route('/invoice/<id>')
+def invoice(id):
+    sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email, city, address, country, arrival_date,
+        departure_date,no_adults, no_children,comment,status FROM guest where rowid={}'''.format(id)
+    rows = cur.execute(sql)
+    row = cur.fetchone()
+    sql = '''SELECT price FROM room where room_no="{}"'''.format(row[1])
+    rooms = cur.execute(sql)
+    room=cur.fetchone()
+    if not room:
+        message='Room {} does not exist'.format(row[1])
+        return template('templates/error_message.tpl',message=message)
+    price = float(room[0].replace(',','.'))
+    arrival = convert_date(row[9])
+    departure = convert_date(row[10])
+    days = days_between(departure, arrival)
+    total = days*price
+    vat = total*float(hotel['vat'])/100
+    data = {'rowid':row[0],'room_no':row[1],'first_name':row[2],'last_name':row[3],  'phone':row[4], 'email':row[5],'city':row[6],'address':row[7],'country':row[8],
+            'arrival_date':row[9],'departure_date':row[10],'no_adults':row[11], 'no_children':row[12],'comment':row[13],'status':row[14],
+            'days':days,'price':price,'total':total,'vat':vat,'hotel_name':hotel['name'],'hotel_logo':hotel['logo'],"hotel_address":hotel['address'],
+            "hotel_country":hotel['country'],"hotel_phone":hotel['phone'],"hotel_email":hotel['email'],"hotel_vat":hotel["vat"]}
+    return template('templates/invoice.tpl',**data)
+
 @route('/')
 @route('/index')
 def index():
