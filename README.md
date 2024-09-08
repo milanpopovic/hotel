@@ -4,7 +4,7 @@ Clone this repository to a local folder (ex. hotel)
 
 $ cd hotel
 
-$ python app.py
+$ python3 app.py
 
 In the browser open link localhost:8000
 
