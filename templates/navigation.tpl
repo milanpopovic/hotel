@@ -8,6 +8,8 @@
 			<li class="navigation_item"><a href = '/users'>Users</a></li>
 			<li class="navigation_item"><a href = '/edit_setup'>Setup</a></li>
 			<li class="navigation_item"><a href = '/login'>Login</a></li>
+			<li class="navigation_item"><a href = '/about'>About</a></li>
+			<li class="navigation_item"><a href = '/help'>Help</a></li>
 		</ul>
 	</nav>
 	
