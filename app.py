@@ -3,14 +3,27 @@ from bottle.bottle import get, post, request, redirect
 import sqlite3
 import datetime, json
 
+from user import *
+
 con = sqlite3.connect('database/hotel.db')
 cur = con.cursor()
+
 
 GUEST = ['room_no','first_name','last_name','phone,email', 'city','address','country','arrival_date',
         'departure_date','no_adults','no_children','comment','status']
 ROOM = ['room_no', 'floor', 'category', 'beds', 'price', 'status']
 
 hotel = {}
+
+@route('/login')
+def login():
+    return template('templates/login.tpl',hotel=hotel['name'])
+
+@post('/login_check')
+def login_check():
+    login = request.forms.get('login')
+    password = request.forms.get('password')
+    redirect('/')
 
 def read_setup():
     global hotel
@@ -58,11 +71,13 @@ def static(path):
 
 @route('/create_database/<name>')
 def create_db(name):
-    con = sqlite3.connect('hotel.db')
+    con = sqlite3.connect('database/'+name+'.db')
     cur = con.cursor()
-    cur.execute("CREATE TABLE room(room_no, floor, category, beds, price, status)")
-    cur.execute("CREATE TABLE guest(room_no,first_name,last_name,phone, email,city,address,country,\
-                arrival_date, departure_date,no_adults, no_children,comment)")
+    cur.execute("CREATE TABLE if not exists room(room_no, floor, category, beds, price, status)")
+    cur.execute("CREATE TABLE if not exists guest(room_no,first_name,last_name,phone, email,city,address,country,\
+                arrival_date, departure_date,no_adults, no_children,comment,status)")
+    cur.execute("CREATE TABLE if not exists user(login, password,status)")
+    redirect('/')
 
 @route('/new_guest')
 def new_guest():
@@ -214,9 +229,9 @@ def save_room():
     cur.execute('''INSERT into room(room_no,floor,category,beds,price,status) VALUES (?,?,?,?,?,?)''',\
                 (room_no,floor,category,beds,price,status))
     con.commit()
-    rooms = []
-    for row in cur.execute("SELECT room_no, floor, category, beds, price, status FROM room ORDER BY room_no"):
-        rooms.append(row)
+##    rooms = []
+##    for row in cur.execute("SELECT room_no, floor, category, beds, price, status FROM room ORDER BY room_no"):
+##        rooms.append(row)
     redirect('/rooms')
 
 @route('/rooms')
@@ -262,7 +277,5 @@ def invoices():
 @route('/reservations')
 def reservations():
     return template('templates/guests.tpl', guests=all_guests('Reservations'))
- 
-
 read_setup()     
 run(host='0.0.0.0', port=8000)
