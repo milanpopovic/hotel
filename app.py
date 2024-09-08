@@ -35,7 +35,8 @@ def save_setup():
     country = request.forms.get('country')
     phone = request.forms.get('phone')
     email = request.forms.get('email')
-    json_string = json.dumps({'name':name,'logo':logo,'address':address,'country':country,'phone':phone,'email':email})
+    vat = request.forms.get('vat')
+    json_string = json.dumps({'name':name,'logo':logo,'address':address,'country':country,'phone':phone,'email':email,'vat':vat})
     f = open('setup.json','w')
     f.write(json_string)
     f.close()
@@ -185,10 +186,11 @@ def invoice(id):
     departure = convert_date(row[10])
     days = days_between(departure, arrival)
     total = days*price
-    vat = total*0.2
+    vat = total*float(hotel['vat'])/100
     data = {'rowid':row[0],'room_no':row[1],'first_name':row[2],'last_name':row[3],  'phone':row[4], 'email':row[5],'city':row[6],'address':row[7],'country':row[8],
             'arrival_date':row[9],'departure_date':row[10],'no_adults':row[11], 'no_children':row[12],'comment':row[13],'status':row[14],
-            'days':days,'price':price,'total':total,'vat':vat,'hotel_name':hotel['name'],'hotel_logo':hotel['logo'],"hotel_address":hotel['address'],"hotel_country":hotel['country'],"hotel_phone":hotel['phone'],"hotel_email":hotel['email']}
+            'days':days,'price':price,'total':total,'vat':vat,'hotel_name':hotel['name'],'hotel_logo':hotel['logo'],"hotel_address":hotel['address'],
+            "hotel_country":hotel['country'],"hotel_phone":hotel['phone'],"hotel_email":hotel['email'],"hotel_vat":hotel["vat"]}
     return template('templates/invoice.tpl',**data)
 
 @route('/reservation/<id>')
