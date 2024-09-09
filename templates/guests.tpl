@@ -1,7 +1,5 @@
-  % include('templates/header.tpl',page_title='Guest Management')
-  % include('templates/navigation.tpl')
- 
-  <script>
+ <link rel="stylesheet" href="../static/css/milligram.min.css" />
+ <script>
   var SelectedRow = "";
   var fontColor = "";
 
@@ -68,7 +66,9 @@ function ToggleAction() {
   }
 }
 </script>
-   <h2>{{title}}</h2>
+   <div style="margin-left:10px;margin-top:10px">
+   <!--<h3 style="display:inline;"><a href="javascript:history.back()"><b> &#127968; </b></a>{{title}}&nbsp;&nbsp;</h3>-->
+   <h3><a href="javascript:history.back()"><b> &#127968; </b></a>{{title}}&nbsp;&nbsp;</h3>
    <a class="button" href="/new_guest"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
@@ -122,3 +122,4 @@ function ToggleAction() {
   </tbody>
   </table>
   % include('templates/footer.tpl')
+  </div>

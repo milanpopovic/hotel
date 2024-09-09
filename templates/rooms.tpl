@@ -1,5 +1,4 @@
-% include('templates/header.tpl',page_title='Room Management')
-% include('templates/navigation.tpl')
+<link rel="stylesheet" href="../static/css/milligram.min.css" />
 <script>
 var SelectedRow = "";
 var fontColor = "";
@@ -61,6 +60,8 @@ function ToggleAction() {
   }
 }
 </script>
+<div style="margin-left:10px;margin-top:10px">
+<h3><a href="javascript:history.back()"><b> &#127968; </b></a>Rooms</h3>
 <a class="button" href="/new_room"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
@@ -97,3 +98,4 @@ function ToggleAction() {
   </tbody>
   </table>
 % include('templates/footer.tpl')
+<div style="margin-left:10px;margin-top:10px">

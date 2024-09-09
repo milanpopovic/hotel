@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
 <div class="container">
 <h3>Hotel {{hotel}}</h3>
-<form method="post" action="/login_check" onSubmit="return validateForm();">
+<form method="post" action="/login_chek" onSubmit="return validateForm();">
   <!--<div style="padding-bottom: 18px;font-size : 24px;">Login</div>-->
   <fieldset>
     <label for="login">Login</label>

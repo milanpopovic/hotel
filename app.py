@@ -1,7 +1,7 @@
-from bottle.bottle import route, run, template, static_file
-from bottle.bottle import get, post, request, redirect
+from bottle.bottle import auth_basic, route, run, template, static_file
+from bottle.bottle import get, post, request, redirect, abort
 import sqlite3
-import datetime, json
+import datetime, json, functools
 
 from user import *
 from guest import *
@@ -15,8 +15,37 @@ GUEST = ['room_no','first_name','last_name','phone,email', 'city','address','cou
 ROOM = ['room_no', 'floor', 'category', 'beds', 'price', 'status']
 
 hotel = {}
+  
+users={user[0]:user[1] for user in cur.execute("select login,password from user")}
+logged = False
+
+def is_authenticated_user(user, password):
+    global logged
+    # You write this function. It must return
+    # True if user/password is authenticated, or False to deny access.
+    result = user in users and users[user] == password and logged
+    if not logged:
+        logged = True
+    return True
+    return result
+
+@route('/logout', method=["GET", "POST"])
+@auth_basic(is_authenticated_user)
+def logout():
+    global logged
+    logged = False
+    redirect('/')
+    #return "You're no longer logged in"
+    #abort(401, "You're no longer logged in")
+
+@route('/')
+@route('/index')
+@auth_basic(is_authenticated_user)
+def index():
+    return template('templates/index.html')
 
 @route('/invoice/<id>')
+
 def invoice(id):
     sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email, city, address, country, arrival_date,
         departure_date,no_adults, no_children,comment,status FROM guest where rowid={}'''.format(id)
@@ -39,11 +68,6 @@ def invoice(id):
             'days':days,'price':price,'total':total,'vat':vat,'hotel_name':hotel['name'],'hotel_logo':hotel['logo'],"hotel_address":hotel['address'],
             "hotel_country":hotel['country'],"hotel_phone":hotel['phone'],"hotel_email":hotel['email'],"hotel_vat":hotel["vat"]}
     return template('templates/invoice.tpl',**data)
-
-@route('/')
-@route('/index')
-def index():
-    return template('templates/index.html')
                     
 @route('/help')
 def help():
@@ -108,6 +132,5 @@ def save_setup():
     f.close()
     read_setup()
     redirect('/')
-
-read_setup()     
+read_setup()   
 run(host='0.0.0.0', port=8000)

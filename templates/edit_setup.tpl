@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
 <div class="container">
 <form method="post" action="/save_setup" onSubmit="return validateForm();">
-  <div style="padding-bottom: 18px;font-size : 24px;">Hotel setup</div>
+  <div style="padding-bottom: 18px;font-size : 24px;margin-top:30"">Hotel setup</div>
   <fieldset>
     <label for="name">Hotel name</label>
     <input type="text" placeholder="Name" id="name" name="name" value="{{name}}">

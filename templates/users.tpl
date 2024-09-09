@@ -1,5 +1,8 @@
+<!--
 % include('templates/header.tpl',page_title='User Management')
 % include('templates/navigation.tpl')
+-->
+<link rel="stylesheet" href="../static/css/milligram.min.css" />
 <style>
 .hidetext { -webkit-text-security: disc; /* Default */ }
 </style>
@@ -64,7 +67,9 @@ function ToggleAction() {
   }
 }
 </script>
-<a class="button" href="/new_user"><span class="pln">New</span></a> 
+<div style="margin-left:10px;margin-top:10px">
+<h3><a href="javascript:history.back()"><b> &#127968; </b></a> Users</h3>
+<a class="button" href="/new_user"><span class="pln"> New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
     <option value="">Actions</option>
@@ -94,3 +99,4 @@ function ToggleAction() {
   </tbody>
   </table>
 % include('templates/footer.tpl')
+</div>
