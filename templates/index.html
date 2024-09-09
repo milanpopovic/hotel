@@ -27,11 +27,31 @@
   </div>
   <div class="column column-50 column-offset-10" style="margin-top:50px">
   <span class="pln">
-  <img src="../static/img/hotel.jpg" width="1200px"/>
+  <img id="theImage" src="../static/img/hotel.jpg" width="1200px"/>
   <p>Boutique hotel stays true to the local culture.</p>
   </span>
   </div>
   </div>
   </div>
   % include('templates/footer.tpl')
+  <script>
+ImageSwitch=new Array();
+    ImageSwitch[0]='../static/img/hotel1.jpg';
+    ImageSwitch[1]='../static/img/hotel2.jpg';
+    ImageSwitch[2]='../static/img/hotel3.jpg';
+    ImageSwitch[3]='../static/img/hotel4.jpg';
+    ImageSwitch[4]='../static/img/hotel5.jpg';
+    ImageSwitch[5]='../static/img/hotel6.jpg';
+    ImageSwitch[6]='../static/img/hotel7.jpg';
+    ImageSwitch[7]='../static/img/hotel8.jpg';
+    ImageSwitch[8]='../static/img/hotel9.jpg';
+
+    function swapImage() 
+    {
+        r = Math.round(Math.random()*8);
+        console.log(r);
+        document.getElementById("theImage").setAttribute("src", ImageSwitch[r])
+    }
+    swapImage();
+  </script>
   
