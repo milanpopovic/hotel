@@ -4,12 +4,8 @@
 			<li class="navigation_item"><a href = '/guests/Checked-in'>Checked-in</a></li>
 			<li class="navigation_item"><a href = '/guests/Checked-out'>Checked-out</a></li>
 			<li class="navigation_item"><a href = '/guests/Reservation'>Reservations</a></li>
-			<li class="navigation_item"><a href = '/rooms'>Rooms</a></li>
-			<li class="navigation_item"><a href = '/users'>Users</a></li>
-			<li class="navigation_item"><a href = '/edit_setup'>Setup</a></li>
-			<li class="navigation_item"><a href = '/about'>About</a></li>
-			<li class="navigation_item"><a href = '/help'>Help</a></li>
-			<li class="navigation_item"><a href = '/logout'>Logout</a></li>
+			<li class="navigation_item"><a href = '/admin'>Admin</a></li>
+			<li class="navigation_item"><a href = '/logout'>Logout</a></li>		
 		</ul>
 	</nav>
 	

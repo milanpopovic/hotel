@@ -1,7 +1,6 @@
 from bottle.bottle import auth_basic, route, run, template, static_file
 from bottle.bottle import get, post, request, redirect, abort
-import sqlite3
-import datetime, json, functools
+import sqlite3, datetime, json, functools
 
 from user import *
 from guest import *
@@ -26,11 +25,10 @@ def is_authenticated_user(user, password):
     result = user in users and users[user] == password and logged
     if not logged:
         logged = True
-    return True
     return result
 
 @route('/logout', method=["GET", "POST"])
-@auth_basic(is_authenticated_user)
+#@auth_basic(is_authenticated_user)
 def logout():
     global logged
     logged = False
@@ -40,12 +38,11 @@ def logout():
 
 @route('/')
 @route('/index')
-@auth_basic(is_authenticated_user)
+#@auth_basic(is_authenticated_user)
 def index():
     return template('templates/index.html')
 
 @route('/invoice/<id>')
-
 def invoice(id):
     sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email, city, address, country, arrival_date,
         departure_date,no_adults, no_children,comment,status FROM guest where rowid={}'''.format(id)
@@ -81,6 +78,10 @@ def about():
 def static(path):
     return static_file(path, root='static')
 
+@route('/admin')
+def admin():
+    return template('templates/admin.tpl')
+
 @route('/create_database/<name>')
 def create_db(name):
     con = sqlite3.connect('database/'+name+'.db')
@@ -90,7 +91,6 @@ def create_db(name):
                 arrival_date, departure_date,no_adults, no_children,comment,status)")
     cur.execute("CREATE TABLE if not exists user(login, password,status)")
     redirect('/')
-
 
 @route('/login')
 def login():
@@ -107,10 +107,6 @@ def read_setup():
     f = open('setup.json')
     hotel = json.load(f)
     f.close()
-
-@route('/admin')
-def admin():
-    return template('templates/admin.html')
 
 @route('/edit_setup')
 def edit_setup():
