@@ -6,11 +6,6 @@
   }
 }
 </style>
-<!--
-<div class="container">
-<div><img src="../static/img/boutique.png" width="100" height="100"/><span style="font-size:50;color:#FFD700;vertical-align:top;font-weight: bold;">Royal Palace</span></div>
-<hr/>
--->
 <div class="container">
     <div class="row">
 			<span style="font-size:50;color:#FFD700;vertical-align:top;font-weight: bold;">INVOICE</span>
@@ -65,6 +60,3 @@
 	</div>
 	<a href="javascript:history.back()" class="no-print">Go back</a>
 </div>
-
-
-

@@ -9,5 +9,3 @@
 			<li class="navigation_item"><a href = '/logout'>Logout</a></li>
 		</ul>
 	</nav>
-	
-

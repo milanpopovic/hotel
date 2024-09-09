@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
-
 <div class="container">
 <form method="post" action="/update_room" onSubmit="return validateForm();">
   <div style="padding-bottom: 18px;font-size : 24px;">View/Edit Room</div>

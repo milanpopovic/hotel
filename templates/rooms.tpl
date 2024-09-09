@@ -70,7 +70,6 @@ function ToggleAction() {
     <option value="delete">Delete</option>
    </select>
    </span>
-  <!--<button onclick="getSelectedRow()">Edit selected</button>-->
   <table id="mytable">
   <thead>
     <tr>

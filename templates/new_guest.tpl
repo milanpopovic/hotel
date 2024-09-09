@@ -2,7 +2,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
 <div style="padding-bottom: 18px;font-size : 24px;">New guest</div>
-    
     <form method="post" action="/save_guest" onSubmit="return validateForm();">
     <div class="container">
         <div class='row'>

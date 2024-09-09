@@ -1,7 +1,3 @@
-<!--
-% include('templates/header.tpl',page_title='User Management')
-% include('templates/navigation.tpl')
--->
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
 <style>
 .hidetext { -webkit-text-security: disc; /* Default */ }
@@ -34,7 +30,6 @@ function deHighlight() {
 }
 
 function getSelectedRow() {
-    //alert(SelectedRow);
     location.href="/edit_user/"+SelectedRow;
 }
 
@@ -77,7 +72,6 @@ function ToggleAction() {
     <option value="delete">Delete</option>
    </select>
    </span>
-  <!--<button onclick="getSelectedRow()">Edit selected</button>-->
   <table id="mytable">
   <thead>
     <tr>
