@@ -14,15 +14,17 @@ def new_user():
 def save_user():
     login = request.forms.get('login')
     password = request.forms.get('password')
+    email = request.forms.get('email')
+    phone = request.forms.get('phone')
     status = request.forms.get('status')
-    cur.execute('''INSERT into user(login,password,status) VALUES (?,?,?)''',(login,password,status))
+    cur.execute('''INSERT into user(login,password,email,phone,status) VALUES (?,?,?,?,?)''',(login,password,email,phone,status))
     con.commit()
     redirect('/users')
 
 @route('/users')
 def users():
     users = []
-    for row in cur.execute("SELECT rowid,login,password,status FROM user ORDER BY login"):
+    for row in cur.execute("SELECT rowid,login,password,email,phone,status FROM user ORDER BY login"):
         users.append(row)
     return template('templates/users.tpl', users=users)
 
@@ -38,15 +40,17 @@ def update_user():
     rowid = request.forms.get('rowid')
     login = request.forms.get('login')
     password = request.forms.get('password')
+    email = request.forms.get('email')
+    phone = request.forms.get('phone')
     status = request.forms.get('status')
-    cur.execute('''UPDATE user set login=?, password=?, status=? where rowid=?''',(login,password,status,rowid))
+    cur.execute('''UPDATE user set login=?, password=?, email=?, phone=?, status=? where rowid=?''',(login,password,email,phone,status,rowid))
     con.commit()
     redirect('/users')
 
 @route('/edit_user/<id>')
 def edit_user(id):
-    sql='''SELECT rowid,login,password,status FROM user where rowid={}'''.format(id) 
+    sql='''SELECT rowid,login,password,email,phone,status FROM user where rowid={}'''.format(id) 
     rows = cur.execute(sql)
     row = cur.fetchone()
-    data = {'rowid':row[0],'login':row[1],'password':row[2],'status':row[3]}
+    data = {'rowid':row[0],'login':row[1],'password':row[2],'email':row[3],'phone':row[4],'status':row[5]}
     return template('templates/edit_user.tpl',**data)

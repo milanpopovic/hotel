@@ -10,6 +10,10 @@
     <input type="text" placeholder="login" id="login" name="login" value={{login}}>
     <label for="password">Password</label>
     <input type="password" placeholder="password" id="password" name="password" value={{password}}>
+    <label for="email">Email</label>
+    <input type="text" placeholder="email" id="email" name="email" value={{email}}>
+    <label for="phone">Mobile</label>
+    <input type="text" placeholder="phone" id="phone" name="phone" value={{phone}}>
     <label for="status">Status</label>
     <select id="status" name="status">
       <option value="active">active</option>

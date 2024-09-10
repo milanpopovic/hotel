@@ -45,9 +45,8 @@
     switch(option_value){
       case 'edit': location.href="/edit_guest/"+SelectedRow;break;
       case 'delete': location.href="/delete_guest/"+SelectedRow;break;
-      case 'checkin': location.href="/checkin/"+SelectedRow;break;
-      case 'checkout': location.href="/checkout/"+SelectedRow;break;
-      case 'reservation': location.href="/reservation/"+SelectedRow;break;
+      case 'send-email': SendEmail(SelectedRow);break;
+      case 'send-sms': SendSms(SelectedRow);break;
       case 'invoice': location.href="/invoice/"+SelectedRow;break;
       default: break;
     }
@@ -71,8 +70,10 @@ function ToggleAction() {
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
     <option value="">Actions</option>
     <option value="edit">View/Edit</option>
-    <option value="delete">Delete</option>
     <option value="invoice">Invoice</option>
+    <option value="send-email">Send Email</option>
+    <option value="send-sms">Send SMS</option>
+    <option value="delete">Delete</option>
    </select>
    </span>
 
@@ -123,3 +124,13 @@ function ToggleAction() {
   </table>
   % include('templates/footer.tpl')
   </div>
+  <script>
+  function SendEmail(id){
+     let message = prompt("Please enter your message");
+     if (message) alert("Send email message: "+message+" to userid:"+id+" not implemented");
+  }
+  function SendSms(id){
+     let message = prompt("Please enter your message");
+     if (message)alert("Send SMS message: "+message+" to userid:"+id+" not implemented");
+  }
+  </script>

@@ -7,6 +7,10 @@
     <input type="text" placeholder="login" id="login" name="login">
     <label for="password">Password</label>
     <input type="text" placeholder="password" id="password" name="password">
+    <label for="email">Email</label>
+    <input type="text" placeholder="email" id="email" name="email">
+    <label for="phone">Mobile</label>
+    <input type="text" placeholder="phone" id="phone" name="phone">
     <label for="floor">Status</label>
     <select id="status" name="status">
       <option value="active">active</option>

@@ -46,6 +46,8 @@ function SelectAction(dropdown)
     //alert('The option value is "' + option_value + '"\nand the text is "' + option_text + '"');
     switch(option_value){
       case 'edit': location.href="/edit_user/"+SelectedRow;break;
+      case 'send-email': SendEmail(SelectedRow);break;
+      case 'send-sms': SendSms(SelectedRow);break;
       case 'delete': location.href="/delete_user/"+SelectedRow;break;
       default: break;
     }
@@ -69,6 +71,8 @@ function ToggleAction() {
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
     <option value="">Actions</option>
     <option value="edit">View/Edit</option>
+    <option value="send-email">Send Email</option>
+    <option value="send-sms">Send SMS</option>
     <option value="delete">Delete</option>
    </select>
    </span>
@@ -78,15 +82,19 @@ function ToggleAction() {
       <th style="display:none;">ID</th>
       <th>Login</th>
       <th>Password</th>
+      <th>Email</th>
+      <th>Mobile</th>
       <th>Status</th>
     </tr>
   </thead>
   <tbody>
-    % for rowid,login,password,status in users:
+    % for rowid,login,password,email,phone,status in users:
       <tr onclick="highlight(this);">
       <td style="display:none;">{{rowid}}</td>
       <td>{{login}}</td>
       <td class="hidetext">{{password}}</td>
+      <td>{{email}}</td>
+      <td>{{phone}}</td>
       <td>{{status}}</td>
       </tr>
     % end
@@ -94,3 +102,13 @@ function ToggleAction() {
   </table>
 % include('templates/footer.tpl')
 </div>
+<script>
+  function SendEmail(id){
+     let message = prompt("Please enter your message");
+     if (message) alert("Send email message: "+message+" to userid:"+id+" not implemented");
+  }
+  function SendSms(id){
+     let message = prompt("Please enter your message");
+     if (message)alert("Send SMS message: "+message+" to userid:"+id+" not implemented");
+  }
+  </script>
