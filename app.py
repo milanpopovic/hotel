@@ -5,6 +5,7 @@ import sqlite3, datetime, json, functools
 from user import *
 from guest import *
 from room import *
+from iot import *
 
 con = sqlite3.connect('database/hotel.db')
 cur = con.cursor()
