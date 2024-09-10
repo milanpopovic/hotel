@@ -64,8 +64,8 @@ function ToggleAction() {
   }
 }
 </script>
-   <div style="margin-left:10px;margin-top:10px">
-   <h3><a href="javascript:history.back()"><b> &#127968; </b></a>{{title}}&nbsp;&nbsp;</h3>
+   <div class="container">
+   <h3><a href="/"><b> &#127968; </b></a>{{title}}&nbsp;&nbsp;</h3>
    <a class="button" href="/new_guest"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
@@ -83,14 +83,19 @@ function ToggleAction() {
       <th>Room No.</th>
       <th>First name</th>
       <th>Last name</th>
+  <!--
       <th>Phone</th>
       <th>Email</th>
+  -->
       <th>Arrival date</th>
       <th>Departure date</th>
+  <!--
       <th>No. of adults</th>
       <th>No. of children</th>
+  -->
       <th>Comment</th>
-      <th>Status</th>
+      <!--<th>Status</th>-->
+    
     </tr>
   </thead>
   <tbody>
@@ -100,14 +105,18 @@ function ToggleAction() {
       <td>{{room_no}}</td>
       <td>{{first_name}}</td>
       <td>{{last_name}}</td>
+      <!--
       <td>{{phone}}</td>
       <td>{{email}}</td>
+      -->
       <td>{{arrival_date}}</td>
       <td>{{departure_date}}</td>
+      <!--
       <td>{{no_adults}}</td>
       <td>{{no_children}}</td>
+      -->
       <td>{{comment}}</td>
-      <td>{{status}}</td>
+      <!--<td>{{status}}</td>-->
       </tr>
     % end
   </tbody>

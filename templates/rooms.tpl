@@ -60,7 +60,7 @@ function ToggleAction() {
   }
 }
 </script>
-<div style="margin-left:10px;margin-top:10px">
+<div class="container">
 <h3><a href="javascript:history.back()"><b> &#127968; </b></a>Rooms</h3>
 <a class="button" href="/new_room"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 

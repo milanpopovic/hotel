@@ -1,10 +1,13 @@
-  % include('templates/header.tpl',page_title='Boutique Hotel Management')
-  % include('templates/navigation.tpl')
+ 
   <div class="container">
   <div class="row">
-  <div class="column column-50"><span class="pln">
-
-    <h3>Hotel Management for Boutique hotels</h3>
+     % include('templates/header.tpl',page_title='Boutique Hotel Management')
+  </div>
+  <div class="row">
+     % include('templates/navigation.tpl')
+  </div>
+  <div class="row">
+  <div class="column column-50">
     <p>
     A boutique hotel is a type of hotel that feels small, intimate, and quaint. 
     It typically has less than 100 rooms and offers guests an ultra-personal service. 
@@ -23,17 +26,15 @@
     </p>
     <a href="https://www.hospitalitynet.org/editorial/4010409.html" target="_blank">Read more: The Definition of Boutique Hotels</a>
     <hr>
-    </span>
+     % include('templates/footer.tpl')
   </div>
-  <div class="column column-50 column-offset-10" style="margin-top:50px">
-  <span class="pln">
-  <img id="theImage" src="../static/img/hotel.jpg" width="1200px"/>
-  <p>Boutique hotel stays true to the local culture.</p>
-  </span>
+  <div class="column column-30 column-offset-10" style="margin-top:1px">
+    <img id="theImage" src="../static/img/hotel.jpg" width="1200px"/>
+    <p>Boutique hotel stays true to the local culture.</p>
   </div>
   </div>
   </div>
-  % include('templates/footer.tpl')
+ 
   <script>
 ImageSwitch=new Array();
     ImageSwitch[0]='../static/img/hotel1.jpg';
