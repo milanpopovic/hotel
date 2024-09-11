@@ -65,7 +65,7 @@ function ToggleAction() {
 
 </script>
 <!--<div style="margin-left:10px;margin-top:10px">-->
-<div class="container">
+<div class="container"style="margin-top:20" >
 <h3><a href="/admin"><b> &#127968; </b></a> IoT Devices</h3>
 <a class="button" href="/new_device"><span class="pln"> New</span></a> 
    <span class="pln"><a href="/">&#9881;</a> 

@@ -60,7 +60,7 @@ function ToggleAction() {
   }
 }
 </script>
-<div class="container">
+<div class="container" style="margin-top:20">
 <h3><a href="/admin"><b> &#127968; </b></a>Assets</h3>
 <a class="button" href="/new_asset"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 

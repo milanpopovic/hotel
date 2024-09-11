@@ -1,7 +1,12 @@
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
-<div class="container">
+
 <form method="post" action="/save_setup" onSubmit="return validateForm();">
+<div class="container">
+  <div class="row">
   <div style="padding-bottom: 18px;font-size : 24px;margin-top:30"">Hotel setup</div>
+  </div>
+  <div class="row">
+  <div class="column">
   <fieldset>
     <label for="name">Hotel name</label>
     <input type="text" placeholder="Name" id="name" name="name" value="{{name}}">
@@ -15,13 +20,30 @@
     <input type="text" placeholder="Phone" id="phone" name="phone" value={{phone}}>
     <label for="email">Email</label>
     <input type="text" placeholder="Email" id="email" name="email" value={{email}}>
+  </fieldset>
+  </div>
+  <div class="column">
+  <fieldset>
     <label for="email">VAT(%)</label>
     <input type="text" placeholder="VAT(%)" id="vat" name="vat" value={{vat}}>
-    <input class="button-primary" type="submit" value="Send">
-    <input type="button" value="Cancel" onclick="history.back()"/>
+    <label for="smtp_server">SMTP server</label>
+    <input type="text" placeholder="smtp server" id="smtp_server" name="smtp_server" value={{smtp_server}}>
+    <label for="port">Port</label>
+    <input type="text" placeholder="port" id="port" name="port" value={{port}}>
+    <label for="password">Password</label>
+    <input type="password" placeholder="password" id="password" name="password" value="{{password}}">
   </fieldset>
+  </div>
+  </div>
+  <div class="row">
+    <fieldset>
+	   <input class="button-primary" type="submit" value="Send">
+	   <input type="button" value="Cancel" onclick="history.back()"/>
+	</fieldset>
+  </div>
+ </div>
 </form>
-</div>
+
 <script>
 function validateForm(){
     return true;

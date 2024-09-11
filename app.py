@@ -1,6 +1,8 @@
 from bottle.bottle import auth_basic, route, run, template, static_file
 from bottle.bottle import get, post, request, redirect, abort
 import sqlite3, datetime, json, functools
+import smtplib, ssl
+from email.message import EmailMessage
 
 from user import *
 from guest import *
@@ -124,11 +126,45 @@ def save_setup():
     phone = request.forms.get('phone')
     email = request.forms.get('email')
     vat = request.forms.get('vat')
-    json_string = json.dumps({'name':name,'logo':logo,'address':address,'country':country,'phone':phone,'email':email,'vat':vat})
+    smtp_server = request.forms.get('smtp_server')
+    port = request.forms.get('port')
+    password = request.forms.get('password')
+    json_string = json.dumps({'name':name,'logo':logo,'address':address,'country':country,'phone':phone,'email':email,'vat':vat, 'smtp_server':smtp_server,'port':port,'password':password}, indent=4)
     f = open('setup.json','w')
     f.write(json_string)
     f.close()
     read_setup()
-    redirect('/')
+    redirect('/admin')
+
+
+@route('/send_email/<to>/<id>/<message>')
+def send_mail_guest(to,id,message):
+    if to == 'guest':
+        sql = '''SELECT rowid,first_name,email FROM guest where rowid={}'''.format(id)
+    else:
+        sql = '''SELECT rowid,login,email FROM user where rowid={}'''.format(id)
+    rows = cur.execute(sql)
+    row = cur.fetchone()
+    name = row[1]
+    receiver_email = row[2]
+    sender_email = hotel['email']
+    text = 'Hi {}, \n\n{}\n\nRespectfully,\n\nHotel {}\n{}\nPhone: {}\nEmail: {}'.format(name, message,hotel['name'],hotel['address'],hotel['phone'],hotel['email'])
+    msg = EmailMessage()
+    msg.set_content(text)
+    msg['Subject'] = 'Info'
+    msg['From'] = sender_email
+    msg['To'] = receiver_email
+    password =  hotel['password']
+    port = hotel['port']
+    smtp_server = hotel['smtp_server']
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        server.login(sender_email, password)
+        server.send_message(msg)
+    if to == 'guest':
+        redirect("/")
+    else:
+        redirect('/admin')
+    
 read_setup()   
 run(host='0.0.0.0', port=8000)

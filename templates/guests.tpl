@@ -1,5 +1,5 @@
  <link rel="stylesheet" href="../static/css/milligram.min.css" />
- <script>
+ <script type="module">
   var SelectedRow = "";
   var fontColor = "";
   function highlight(row) {
@@ -63,7 +63,7 @@ function ToggleAction() {
   }
 }
 </script>
-   <div class="container">
+   <div class="container" style="margin-top:20">
    <h3><a href="/"><b> &#127968; </b></a>{{title}}&nbsp;&nbsp;</h3>
    <a class="button" href="/new_guest"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
@@ -84,19 +84,9 @@ function ToggleAction() {
       <th>Room No.</th>
       <th>First name</th>
       <th>Last name</th>
-  <!--
-      <th>Phone</th>
-      <th>Email</th>
-  -->
       <th>Arrival date</th>
       <th>Departure date</th>
-  <!--
-      <th>No. of adults</th>
-      <th>No. of children</th>
-  -->
       <th>Comment</th>
-      <!--<th>Status</th>-->
-    
     </tr>
   </thead>
   <tbody>
@@ -106,18 +96,9 @@ function ToggleAction() {
       <td>{{room_no}}</td>
       <td>{{first_name}}</td>
       <td>{{last_name}}</td>
-      <!--
-      <td>{{phone}}</td>
-      <td>{{email}}</td>
-      -->
       <td>{{arrival_date}}</td>
       <td>{{departure_date}}</td>
-      <!--
-      <td>{{no_adults}}</td>
-      <td>{{no_children}}</td>
-      -->
       <td>{{comment}}</td>
-      <!--<td>{{status}}</td>-->
       </tr>
     % end
   </tbody>
@@ -127,7 +108,7 @@ function ToggleAction() {
   <script>
   function SendEmail(id){
      let message = prompt("Please enter your message");
-     if (message) alert("Send email message: "+message+" to userid:"+id+" not implemented");
+     location.href='/send_email/guest/'+id+'/'+encodeURIComponent(message);
   }
   function SendSms(id){
      let message = prompt("Please enter your message");

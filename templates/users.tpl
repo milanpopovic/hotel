@@ -63,8 +63,16 @@ function ToggleAction() {
     x.selectedIndex = 0;
   }
 }
+function SendEmail(id){
+  let message = prompt("Please enter your message");
+  location.href='/send_email/user/'+id+'/' + encodeURIComponent(message);
+}
+function SendSms(id){
+  let message = prompt("Please enter your message");
+  if (message)alert("Send SMS message: "+message+" to userid:"+id+" not implemented");
+}
 </script>
-<div class="container">
+<div class="container"style="margin-top:20">
 <h3><a href="javascript:history.back()"><b> &#127968; </b></a> Users</h3>
 <a class="button" href="/new_user"><span class="pln"> New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
@@ -102,13 +110,3 @@ function ToggleAction() {
   </table>
 % include('templates/footer.tpl')
 </div>
-<script>
-  function SendEmail(id){
-     let message = prompt("Please enter your message");
-     if (message) alert("Send email message: "+message+" to userid:"+id+" not implemented");
-  }
-  function SendSms(id){
-     let message = prompt("Please enter your message");
-     if (message)alert("Send SMS message: "+message+" to userid:"+id+" not implemented");
-  }
-  </script>
