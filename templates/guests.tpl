@@ -1,7 +1,8 @@
  <link rel="stylesheet" href="../static/css/milligram.min.css" />
- <script type="module">
+  <script>
   var SelectedRow = "";
   var fontColor = "";
+  
   function highlight(row) {
       if (SelectedRow!="" && SelectedRow == row.cells[0].textContent){
         deHighlight();
