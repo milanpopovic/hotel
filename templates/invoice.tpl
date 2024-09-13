@@ -58,6 +58,6 @@
 		<p contenteditable>Invoice Terms:</p>
 		</div>
 	</div>
-	<button onclick="window.print()">Print</button>
-	 <input type="button" value="Cancel" onclick="history.back()"/>
+	<button onclick="window.print()" class="no-print">Print</button>
+	 <input type="button" value="Cancel" onclick="history.back()" class="no-print"/>
 </div>

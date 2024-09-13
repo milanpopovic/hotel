@@ -204,7 +204,7 @@ def send_mail():
 @route('/guest_search/<text>')
 def guest_search(text):
     sql = "SELECT rowid,room_no,first_name,last_name,  phone, email,city,address,country,arrival_date,departure_date,no_adults, no_children,comment,status  FROM guest where room_no || first_name ||\
-    last_name  || city || country || status ||comment like '%{}%' ORDER BY room_no".format(text)
+    last_name  || phone || email || city || country || arrival_date || departure_date || status || comment like '%{}%' ORDER BY room_no".format(text)
     rows = cur.execute(sql)
     return template('templates/guests.tpl', title="Search results", guests=rows)
     
