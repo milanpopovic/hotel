@@ -58,5 +58,6 @@
 		<p contenteditable>Invoice Terms:</p>
 		</div>
 	</div>
-	<a href="javascript:history.back()" class="no-print">Go back</a>
+	<button onclick="window.print()">Print</button>
+	 <input type="button" value="Cancel" onclick="history.back()"/>
 </div>

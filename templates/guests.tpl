@@ -82,19 +82,28 @@ function SendSms(id){
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
-  
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
 </script>
    <div class="container" style="margin-top:20">
    <h3><a href="/"><b> &#127968; </b></a>{{title}}&nbsp;&nbsp;</h3>
    <a class="button" href="/new_guest"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
-    <option value="">Actions</option>
-    <option value="edit">View/Edit</option>
-    <option value="invoice">Invoice</option>
-    <option value="send-email">Send Email</option>
-    <option value="send-sms">Send SMS</option>
-    <option value="delete">Delete</option>
+    <option value="" selected>Action</option>
+    <optgroup label="Check out">
+      <option value="invoice">Invoice</option>
+    </optgroup>
+    <optgroup label="Change data">
+      <option value="edit">View/Edit</option>
+      <option value="delete">Delete</option>
+    </optgroup>
+    <optgroup label="Send message">
+      <option value="send-email">Email</option>
+      <option value="send-sms">SMS</option>
+    </optgroup>
    </select>
    </span>
 
