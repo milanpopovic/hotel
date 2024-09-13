@@ -5,14 +5,17 @@
 <script>
 var SelectedRow = "";
 var fontColor = "";
-
+var table_row = "";
 function highlight(row) {
+    
     if (SelectedRow!="" && SelectedRow == row.cells[0].textContent){
       deHighlight();
       SelectedRow="";
       return
     }
     SelectedRow=row.cells[0].textContent;
+    table_row = row;
+   
     deHighlight();
     fontColor =  row.style.color;
     row.style.backgroundColor = '#003F87';
@@ -64,12 +67,27 @@ function ToggleAction() {
   }
 }
 function SendEmail(id){
-  let message = prompt("Please enter your message");
-  location.href='/send_email/user/'+id+'/' + encodeURIComponent(message);
+  openForm();
+  document.getElementById("to_user").value = table_row.cells[3].textContent
+  document.getElementById("id").value = table_row.cells[0].textContent
+  //let message = prompt("Please enter your message");
+  //location.href='/send_email/user/'+id+'/' + encodeURIComponent(message);
 }
 function SendSms(id){
   let message = prompt("Please enter your message");
   if (message)alert("Send SMS message: "+message+" to userid:"+id+" not implemented");
+}
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
 }
 </script>
 <div class="container"style="margin-top:20">
@@ -110,3 +128,54 @@ function SendSms(id){
   </table>
 % include('templates/footer.tpl')
 </div>
+
+<!-- The form -->
+<div class="form-popup" id="myForm">
+  <form action="/send_mail" method="POST" class="form-container">
+    <label for="to"><b>To: </b></label><input type="text" placeholder="Enter Recipient" name="to" id="to_user">
+    <label for="subject"><b>Subject</b></label>
+    <input type="text" placeholder="Enter Subject" name="subject" required>
+    <label for="psw"><b>Message</b></label>
+    <textarea id="msg" name="msg"  style="max-width : 600px;height: auto; background: white;" rows="8" class="form-control"></textarea>
+    <input type="text" name="who" style="display:none" value="user">
+    <input type="text" name="id" id="id" style="display:none">
+    <button type="submit" >Send</button>
+    <button type="button" onclick="closeForm()">Cancel</button>
+</div>
+<style>
+{box-sizing: border-box;}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 20;
+  left:35%;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 500px;
+  padding: 10px;
+  background-color: #f1f1f1; /*white;*/
+}
+
+/* Full-width input fields */
+.form-container input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: white; /*#f1f1f1;*/
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+</style>

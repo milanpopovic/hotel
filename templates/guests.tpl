@@ -2,6 +2,7 @@
   <script>
   var SelectedRow = "";
   var fontColor = "";
+  var table_row = "";
   
   function highlight(row) {
       if (SelectedRow!="" && SelectedRow == row.cells[0].textContent){
@@ -10,6 +11,7 @@
         return
       }
       SelectedRow=row.cells[0].textContent;
+      table_row = row;
       deHighlight();
       fontColor =  row.style.color;
       row.style.backgroundColor = '#003F87';
@@ -63,6 +65,24 @@ function ToggleAction() {
     x.selectedIndex = 0;
   }
 }
+
+function SendEmail(id){
+  openForm();
+  document.getElementById("to_guest").value = table_row.cells[6].textContent
+  document.getElementById("id").value = table_row.cells[0].textContent
+  //let message = prompt("Please enter your message");
+  //location.href='/send_email/guest/'+id+'/'+encodeURIComponent(message);
+}
+
+function SendSms(id){
+  let message = prompt("Please enter your message");
+  if (message)alert("Send SMS message: "+message+" to userid:"+id+" not implemented");
+}
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+  
 </script>
    <div class="container" style="margin-top:20">
    <h3><a href="/"><b> &#127968; </b></a>{{title}}&nbsp;&nbsp;</h3>
@@ -87,6 +107,7 @@ function ToggleAction() {
       <th>Last name</th>
       <th>Arrival date</th>
       <th>Departure date</th>
+      <th>Email</th>
       <th>Comment</th>
     </tr>
   </thead>
@@ -99,6 +120,7 @@ function ToggleAction() {
       <td>{{last_name}}</td>
       <td>{{arrival_date}}</td>
       <td>{{departure_date}}</td>
+      <td>{{email}}
       <td>{{comment}}</td>
       </tr>
     % end
@@ -106,13 +128,54 @@ function ToggleAction() {
   </table>
   % include('templates/footer.tpl')
   </div>
-  <script>
-  function SendEmail(id){
-     let message = prompt("Please enter your message");
-     location.href='/send_email/guest/'+id+'/'+encodeURIComponent(message);
-  }
-  function SendSms(id){
-     let message = prompt("Please enter your message");
-     if (message)alert("Send SMS message: "+message+" to userid:"+id+" not implemented");
-  }
-  </script>
+
+<!-- The form -->
+<div class="form-popup" id="myForm">
+  <form action="/send_mail" method="POST" class="form-container">
+    <label for="to"><b>To: </b></label><input type="text" placeholder="Enter Recipient" name="to" id="to_guest">
+    <label for="subject"><b>Subject</b></label>
+    <input type="text" placeholder="Enter Subject" name="subject" required>
+    <label for="psw"><b>Message</b></label>
+    <textarea id="msg" name="msg"  style="max-width : 600px;height: auto; background: white;" rows="8" class="form-control"></textarea>
+    <input type="text" name="who" style="display:none" value="guest">
+    <input type="text" name="id" id="id" style="display:none">
+    <button type="submit" >Send</button>
+    <button type="button" onclick="closeForm()">Cancel</button>
+</div>
+<style>
+{box-sizing: border-box;}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 20;
+  left:35%;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 500px;
+  padding: 10px;
+  background-color: #f1f1f1; /*white;*/
+}
+
+/* Full-width input fields */
+.form-container input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: white; /*#f1f1f1;*/
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+</style>

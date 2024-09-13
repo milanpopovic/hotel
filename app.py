@@ -162,9 +162,44 @@ def send_mail_guest(to,id,message):
         server.login(sender_email, password)
         server.send_message(msg)
     if to == 'guest':
+        redirect("/guests")
+    else:
+        redirect('/users')
+
+@post('/send_mail')
+def send_mail():
+    receiver_email = request.forms.get('to')
+    subject = request.forms.get('subject')
+    message = request.forms.get('msg')
+    to = request.forms.get('who')
+    id = request.forms.get('id')
+  
+    if to == 'guest':
+        sql = '''SELECT rowid,first_name,email FROM guest where rowid={}'''.format(id)
+    else:
+        sql = '''SELECT rowid,login,email FROM user where rowid={}'''.format(id)
+    rows = cur.execute(sql)
+    row = cur.fetchone()
+    name = row[1]
+    #receiver_email = row[2]
+    sender_email = hotel['email']
+    text = 'Hi {}, \n\n{}\n\nRespectfully,\n\nHotel {}\n{}\nPhone: {}\nEmail: {}'.format(name, message,hotel['name'],hotel['address'],hotel['phone'],hotel['email'])
+    msg = EmailMessage()
+    msg.set_content(text)
+    msg['Subject'] = subject
+    msg['From'] = sender_email
+    msg['To'] = receiver_email
+    password =  hotel['password']
+    port = hotel['port']
+    smtp_server = hotel['smtp_server']
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        server.login(sender_email, password)
+        server.send_message(msg)
+    if to == 'guest':
         redirect("/")
     else:
-        redirect('/admin')
+        redirect('/users')
     
 read_setup()   
 run(host='0.0.0.0', port=8000)
