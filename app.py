@@ -200,6 +200,13 @@ def send_mail():
         redirect("/")
     else:
         redirect('/users')
+
+@route('/guest_search/<text>')
+def guest_search(text):
+    sql = "SELECT rowid,room_no,first_name,last_name,  phone, email,city,address,country,arrival_date,departure_date,no_adults, no_children,comment,status  FROM guest where concat(room_no,first_name,\
+    last_name,city,country,status,comment) like '%{}%' ORDER BY room_no".format(text)
+    rows = cur.execute(sql)
+    return template('templates/guests.tpl', title="Search results", guests=rows)
     
 read_setup()   
 run(host='0.0.0.0', port=8000)

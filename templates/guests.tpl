@@ -86,11 +86,17 @@ function openForm() {
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
+
+function Search(){
+   text = document.getElementById("search-text").value;
+   location.href = "/guest_search/"+encodeURIComponent(text);
+}
+
 </script>
    <div class="container" style="margin-top:20">
    <h3><a href="/"><b> &#127968; </b></a>{{title}}&nbsp;&nbsp;</h3>
    <a class="button" href="/new_guest"><span class="pln">New</span></a> 
-   <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
+   <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a></span> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
     <option value="" selected>Action</option>
     <optgroup label="Check out">
@@ -106,7 +112,8 @@ function closeForm() {
     </optgroup>
    </select>
    </span>
-
+   Search: <input type="text" placeholder="Enter search text and press Enter" id="search-text" name="search-text" style="max-width:600" onchange="Search()" >
+  
   <table id="mytable">
   <thead>
     <tr>
