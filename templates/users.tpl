@@ -110,17 +110,19 @@ function closeForm() {
       <th>Password</th>
       <th>Email</th>
       <th>Mobile</th>
+      <th>Administrator</th>
       <th>Status</th>
     </tr>
   </thead>
   <tbody>
-    % for rowid,login,password,email,phone,status in users:
+    % for rowid,login,password,email,phone,administrator,status in users:
       <tr onclick="highlight(this);">
       <td style="display:none;">{{rowid}}</td>
       <td>{{login}}</td>
       <td class="hidetext">{{password}}</td>
       <td>{{email}}</td>
       <td>{{phone}}</td>
+      <td>{{administrator}}</td>
       <td>{{status}}</td>
       </tr>
     % end

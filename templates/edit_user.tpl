@@ -14,6 +14,8 @@
     <input type="text" placeholder="email" id="email" name="email" value={{email}}>
     <label for="phone">Mobile</label>
     <input type="text" placeholder="phone" id="phone" name="phone" value={{phone}}>
+    <label for="administrator">Administrator?</label>
+    <input type="checkbox" id="administrator" name="administrator" {{administrator}} value='yes'>
     <label for="status">Status</label>
     <select id="status" name="status">
       <option value="active">active</option>

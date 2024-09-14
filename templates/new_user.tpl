@@ -11,7 +11,9 @@
     <input type="text" placeholder="email" id="email" name="email">
     <label for="phone">Mobile</label>
     <input type="text" placeholder="phone" id="phone" name="phone">
-    <label for="floor">Status</label>
+    <label for="administrator">Administrator?</label>
+    <input type="checkbox" id="administrator" name="administrator" value='yes'>
+    <label for="status">Status</label>
     <select id="status" name="status">
       <option value="active">active</option>
       <option value="blocked">blocked</option>
