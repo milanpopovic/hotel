@@ -12,7 +12,7 @@
     <input type="text" placeholder="location" id="location" name="location" value="{{location}}">
     <label for='category'>Category</label>
     <select id="category" name="category">
-      <option value="Room mobillar">Room mobillar</option>
+      <option value="Furniture">Furniture</option>
       <option value="Equipment">Equipment</option>
     </select>
     <label for="year">Year</label>

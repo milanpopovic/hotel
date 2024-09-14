@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
 <div class="container">
 <form method="post" action="/save_asset" onSubmit="return validateForm();">
-  <div style="padding-bottom: 18px;font-size : 24px;">New Room</div>
+  <div style="padding-bottom: 18px;font-size : 24px;">New Asset</div>
   <fieldset>
     <label for="name">Name</label>
     <input type="text" placeholder="name" id="name" name="name">
@@ -9,7 +9,7 @@
     <input type="text" placeholder="location" id="location" name="location">
     <label for='category'>Category</label>
     <select id="category" name="category">
-      <option value="Room mobillar">Room mobillar</option>
+      <option value="Furniture">Furniture</option>
       <option value="Equipment">Equipment</option>
     </select>
     <label for="year">Year</label>
