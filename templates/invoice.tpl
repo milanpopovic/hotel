@@ -31,24 +31,24 @@
 		<th>Departure date</th>
 		<th>Number of days</th>
 		<th>Price per day</th>
-		<th>Total ($)</th>
+		<th style="text-align: right">Total ($)</th>
 		</tr>
 		<tr>
 		<td>{{arrival_date}}</td>
 		<td>{{departure_date}}</td>
 		<td>{{days}}</td>
 		<td>{{price}}</td>
-		<td>{{total}}</td>
+		<td style="text-align: right">{{total}}</td>
 		</tr>
 		<tr>
 		<td colspan=3></td>
 		<td>Tax/VAT ({{hotel_vat}}%)</td>
-		<td>{{vat}}</td>
+		<td style="text-align: right">{{vat}}</td>
 		</tr>
 		<tr>
 		<td colspan=3></td>
 		<td>TOTAL</td>
-		<td>{{total}}</td>
+		<td style="text-align: right" >{{total}}</td>
 		</tr>
 		</table>
 	</div>
