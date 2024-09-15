@@ -17,7 +17,6 @@ def save_user():
     email = request.forms.get('email')
     phone = request.forms.get('phone')
     administrator = request.forms.get('administrator')
-    print('Admin:',administrator)
     status = request.forms.get('status')
     cur.execute('''INSERT into user(login,password,email,phone,administrator,status) VALUES (?,?,?,?,?,?)''',(login,password,email,phone,administrator,status))
     con.commit()

@@ -34,15 +34,16 @@
   
   function SelectAction(dropdown)
 {
-    console.log(dropdown);
-    if(!SelectedRow){ 
+    // Your code to make something happen.
+    var option_value = dropdown.options[dropdown.selectedIndex].value;
+    var option_text = dropdown.options[dropdown.selectedIndex].text;
+
+    if(!SelectedRow && option_value !== "Import"){ 
         alert("Select a guest");
         dropdown.selectedIndex = 0;
         return;
     }
-    // Your code to make something happen.
-    var option_value = dropdown.options[dropdown.selectedIndex].value;
-    var option_text = dropdown.options[dropdown.selectedIndex].text;
+    
     //alert('The option value is "' + option_value + '"\nand the text is "' + option_text + '"');
    
     switch(option_value){
@@ -51,7 +52,7 @@
       case 'send-email': SendEmail(SelectedRow);break;
       case 'send-sms': SendSms(SelectedRow);break;
       case 'invoice': location.href="/invoice/"+SelectedRow;break;
-      default: break;
+      default: alert("Booking.com API not installed");break;
     }
     dropdown.selectedIndex = 0;
 }
@@ -109,6 +110,9 @@ function Search(){
     <optgroup label="Send message">
       <option value="send-email">Email</option>
       <option value="send-sms">SMS</option>
+    </optgroup>
+    <optgroup label="Booking.com" id="booking">
+      <option value="Import">Import</option>
     </optgroup>
    </select>
    </span>
@@ -195,3 +199,9 @@ function Search(){
   outline: none;
 }
 </style>
+<script>
+title="{{title}}"
+if(title !=="Reservation") {
+  document.getElementById("booking").style="display:none";
+}
+</script>

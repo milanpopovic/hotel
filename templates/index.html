@@ -1,36 +1,28 @@
- 
+  % include('templates/header.tpl',page_title='')
   <div class="container">
   <div class="row">
-     % include('templates/header.tpl',page_title='Boutique Hotel Management')
+    <div><h1>Hotel {{hotel_name}}</h1></div>
   </div>
   <div class="row">
      % include('templates/navigation.tpl')
   </div>
   <div class="row">
   <div class="column column-50">
+    
     <p>
-    A boutique hotel is a type of hotel that feels small, intimate, and quaint. 
-    It typically has less than 100 rooms and offers guests an ultra-personal service. 
+   Welcome to Boutique Hotel En Passant, your ultimate destination for a luxurious stay in the heart of Podgorica’s city center. 
+   With 30 beautifully designed rooms, our hotel offers the perfect blend of comfort and style, making it the ideal choice for both business and leisure travelers.
     </p>
     <p>
-    Boutique hotels are characterized by their intimate size, stylish design, and emphasis on individualized service. 
-    Unlike large hotel chains, which often adhere to standardized décor and amenities, boutique hotels pride themselves 
-    on their distinctive personality and attention to detail.
+    The friendly and welcoming team of Hotel En Passant is dedicated to ensuring that you have an unforgettable stay with us, 
+    and we pride ourselves on providing exceptional service that goes above and beyond your expectations.
     </p>
-    <p>
-    Boutique hotels first began appearing in the 1980s in major cities such as London, New York, and San Francisco. 
-    In recent times, boutique hotels have grown in popularity, corresponding with the general public's increased interest in individualized service. 
-    Many hotel chains have begun to focus on creating subsidiary hotels to establish smaller, boutique-style hotels,or in acquiring previously independent boutique hotels.
-    Boutique hotels are commonly found in the city centers of London, New York City, Miami, New Orleans, and Los Angeles. 
-    They are also found in resort destinations and may be furnished with amenities such as spas, yoga, and painting classes.
-    </p>
-    <a href="https://www.hospitalitynet.org/editorial/4010409.html" target="_blank">Read more: The Definition of Boutique Hotels</a>
     <hr>
      % include('templates/footer.tpl')
   </div>
   <div class="column column-30 column-offset-10" style="margin-top:1px">
-    <img id="theImage" src="../static/img/hotel.jpg" width="1200px"/>
-    <p>Boutique hotel stays true to the local culture.</p>
+    <img id="theImage" src="../static/img/hotel1.jpg" width="1200px"/>
+    <p style="allign:middle">En Passant hotel stays true to the local culture.</p>
   </div>
   </div>
   </div>
@@ -53,6 +45,6 @@ ImageSwitch=new Array();
         console.log(r);
         document.getElementById("theImage").setAttribute("src", ImageSwitch[r])
     }
-    swapImage();
+    //swapImage();
   </script>
   

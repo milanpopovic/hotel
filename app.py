@@ -44,7 +44,8 @@ def logout():
 @route('/index')
 #@auth_basic(is_authenticated_user)
 def index():
-    return template('templates/index.html')
+    print(hotel['name'])
+    return template('templates/index.html',hotel_name=hotel['name'])
 
 @route('/invoice/<id>')
 def invoice(id):

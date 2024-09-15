@@ -1,6 +1,6 @@
 	<nav class='navigation'>
 		<ul class='navigation_list'>
-		  	<li class="navigation_item"><a href = '/index'>Reception<a></li>
+		  	<li class="navigation_item"><a href = '/index'>Reception Desk<a></li>
 			<li class="navigation_item"><a href = '/rooms'>Rooms</a></li>
 			<li class="navigation_item"><a href = '/assets'>Inventory</a></li>
 			<li class="navigation_item"><a href = '/devices'>IoT</a></li>
