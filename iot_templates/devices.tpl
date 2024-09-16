@@ -88,9 +88,11 @@ function ToggleAction() {
   </thead>
   <tbody>
     % for rowid,name,ip,status,comment in devices:
+    %  bgcolor = "red" if status == "ON" else "transparent"
+    %  style="color: white" if status == "ON" else ""
       <tr onclick="highlight(this);">
       <td style="display:none;">{{rowid}}</td>
-      <td>{{name}}</td>
+      <td bgcolor="{{bgcolor}}" style="{{style}}">{{name}}</td>
       <td>{{ip}}</td>
       <td>{{status}}</td>
       <td>{{comment}}</td>
