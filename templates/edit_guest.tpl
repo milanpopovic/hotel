@@ -20,15 +20,15 @@
                       </select>
                   </div>
                   <div style=" margin-left: 0; margin-right: 1%; width: 49%;">Room number<span style="color:red;"> *</span><br/>
-	                  <input type="text" id="room_no" name="room_no" value={{room_no}} style="max-width: 30%;" class="form-control"/>
+	                  <input type="text" id="room_no" name="room_no" value="{{room_no}}" style="max-width: 30%;" class="form-control"/>
                   </div>
                   
                   <div style="display: flex; padding-bottom: 18px;max-width : 450px;">
 	                  <div style=" margin-left: 0; margin-right: 1%; width: 49%;">First name<span style="color: red;"> *</span><br/>
-		                  <input type="text" id="first_name" name="first_name" value={{first_name}} style="max-width: 100%;" class="form-control"/>
+		                  <input type="text" id="first_name" name="first_name" value="{{first_name}}" style="max-width: 100%;" class="form-control"/>
 	                  </div>
 	                  <div style=" margin-left: 1%; margin-right: 0; width: 49%;">Last name<span style="color: red;"> *</span><br/>
-		                  <input type="text" id="last_name" name="last_name" value={{last_name}} style="max-width: 100%;" class="form-control"/>
+		                  <input type="text" id="last_name" name="last_name" value="{{last_name}}" style="max-width: 100%;" class="form-control"/>
 	                  </div>
                   </div>
                   <div style="padding-bottom: 18px;">Arrival date<span style="color: red;"> *</span><br/>
@@ -40,10 +40,10 @@
                   </div>
                   <script type="text/javascript">new Pikaday({ field: document.getElementById('departure_date') });</script>
                   <div style="padding-bottom: 18px;">Number of adults<span style="color: red;"> *</span><br/>
-                  <input type="number" id="no_adults" name="no_adults" value={{no_adults}} style="max-width : 250px;" class="form-control"/>
+                  <input type="number" id="no_adults" name="no_adults" value="{{no_adults}}" style="max-width : 250px;" class="form-control"/>
                   </div>
                   <div style="padding-bottom: 18px;">Number of children<br/>
-                  <input type="number" id="no_children" name="no_children" value={{no_children}} style="max-width : 250px;" class="form-control"/>
+                  <input type="number" id="no_children" name="no_children" value="{{no_children}}" style="max-width : 250px;" class="form-control"/>
                   </div>
               </div>
               <div class='column'column-50" >
@@ -60,7 +60,7 @@
                   <input type="text" id="phone" name="phone" value="{{phone}}" style="max-width : 450px;" class="form-control"/>
                   </div>
                   <div style="padding-bottom: 18px;">Email<span style="color: red;"> *</span><br/>
-                  <input type="text" id="email" name="email" value={{email}} style="max-width : 450px;" class="form-control"/>
+                  <input type="text" id="email" name="email" value="{{email}}" style="max-width : 450px;" class="form-control"/>
                   </div>
                   <div style="padding-bottom: 18px;">Questions / Comments<br/>
                         <textarea id="comment" false name="comment"  style="max-width : 450px;height: auto;" rows="8" class="form-control">{{comment}}</textarea>

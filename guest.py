@@ -146,3 +146,16 @@ def invoices():
 @route('/reservations')
 def reservations():
     return template('templates/guests.tpl', guests=all_guests('Reservations'))
+
+@route('/booking_import')
+def booking_import():
+    f=open('contacts.csv')
+    guests = f.readlines()
+    for guest in guests:
+        name,phone,email,city,country = guest.split(',')
+        name = name.split()
+        sql='''INSERT into guest (first_name,last_name,phone,email,city,country,status) values("{}","{}","{}","{}","{}","{}","Reservation");'''.format(name[0],name[1],phone,email,city,country)
+        cur.execute(sql)
+        f.close()
+    con.commit()
+    return template('templates/guests.tpl', guests=all_guests('Reservations'))

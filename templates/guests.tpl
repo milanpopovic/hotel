@@ -33,26 +33,24 @@
   }
   
   function SelectAction(dropdown)
-{
+  {
     // Your code to make something happen.
     var option_value = dropdown.options[dropdown.selectedIndex].value;
     var option_text = dropdown.options[dropdown.selectedIndex].text;
 
-    if(!SelectedRow && option_value !== "Import"){ 
-        alert("Select a guest");
+    if(!SelectedRow && option_value !== "import"){ 
         dropdown.selectedIndex = 0;
         return;
     }
-    
-    //alert('The option value is "' + option_value + '"\nand the text is "' + option_text + '"');
-   
+    //alert('The option value is "' + option_value + '"\nand the text is "' + option_text + '"')
     switch(option_value){
       case 'edit': location.href="/edit_guest/"+SelectedRow;break;
       case 'delete': location.href="/delete_guest/"+SelectedRow;break;
       case 'send-email': SendEmail(SelectedRow);break;
       case 'send-sms': SendSms(SelectedRow);break;
       case 'invoice': location.href="/invoice/"+SelectedRow;break;
-      default: alert("Booking.com API not installed");break;
+      case 'import': location.href="/booking_import";break;
+      default: break;//alert("Booking.com API not installed");break;
     }
     dropdown.selectedIndex = 0;
 }
@@ -71,8 +69,6 @@ function SendEmail(id){
   openForm();
   document.getElementById("to_guest").value = table_row.cells[6].textContent
   document.getElementById("id").value = table_row.cells[0].textContent
-  //let message = prompt("Please enter your message");
-  //location.href='/send_email/guest/'+id+'/'+encodeURIComponent(message);
 }
 
 function SendSms(id){
@@ -92,7 +88,6 @@ function Search(){
    text = document.getElementById("search-text").value;
    location.href = "/guest_search/"+encodeURIComponent(text);
 }
-
 </script>
    <div class="container" style="margin-top:20">
    <h3><a href="/"><b> &#127968; </b></a>{{title}}&nbsp;&nbsp;</h3>
@@ -112,7 +107,7 @@ function Search(){
       <option value="send-sms">SMS</option>
     </optgroup>
     <optgroup label="Booking.com" id="booking">
-      <option value="Import">Import</option>
+      <option value="import">Import</option>
     </optgroup>
    </select>
    </span>
@@ -162,6 +157,8 @@ function Search(){
     <button type="submit" >Send</button>
     <button type="button" onclick="closeForm()">Cancel</button>
 </div>
+
+
 <style>
 {box-sizing: border-box;}
 

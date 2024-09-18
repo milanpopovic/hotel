@@ -12,11 +12,11 @@
       <option value="ON">ON</option>
       <option value="OFF">OFF</option>
     </select>
-    <input class="button-primary" type="submit" value="Send">
-    <input type="button" value="Cancel" onclick="history.back()"/>
     <div style="padding-bottom: 18px;">Comment<br/>
         <textarea id="comment" false name="comment"  style="max-width : 450px;height: auto;" rows="8" class="form-control"></textarea>
     </div>
+    <input class="button-primary" type="submit" value="Send">
+    <input type="button" value="Cancel" onclick="history.back()"/>
   </fieldset>
 </form>
 </div>
