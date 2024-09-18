@@ -36,6 +36,9 @@ def save_guest():
     children = request.forms.get('no_children')
     comment = request.forms.get('comment')
     status = request.forms.get('status')
+    if not check_room_exists(room_no):
+        message='Room {} does not exist'.format(room_no)
+        return template('templates/error_message.tpl',message=message)
     cur.execute('''INSERT into guest (room_no,first_name,last_name,  phone, email,city,address,country,
                 arrival_date, departure_date,no_adults, no_children,comment,status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',\
                 (room_no,first_name,last_name,phone,email,city,address,country,arrival_date,departure_date,adults,children,comment,status))
@@ -60,6 +63,9 @@ def update_guest():
     children = request.forms.get('no_children')
     comment = request.forms.get('comment')
     status = request.forms.get('status')
+    if not check_room_exists(room_no):
+        message='Room {} does not exist'.format(room_no)
+        return template('templates/error_message.tpl',message=message)
     cur.execute('''UPDATE guest set room_no=?, first_name=?, last_name=?, phone=?, email=?, city=?, address=?, country=?, arrival_date=?,\
                     departure_date=?, no_adults=?, no_children=?, comment=?, status=? where rowid=?''',\
                 (room_no,first_name,last_name,phone,email,city,address,country,arrival_date,departure_date,adults,children,comment,status,rowid))
@@ -108,18 +114,21 @@ def days_between(d1, d2):
     date1 = datetime.datetime(d1[0], d1[1], d1[2])
     date2 = datetime.datetime(d2[0], d2[1], d2[2])
     return abs((date2 - date1).days)
-                              
+
+def check_room_exists(room_no):
+    sql = '''SELECT * FROM room where room_no="{}"'''.format(room_no)
+    rooms = cur.execute(sql)
+    room=cur.fetchone()
+    return room
+    
 @route('/invoice/<id>')
 def invoice(id):
     sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email, city, address, country, arrival_date,
         departure_date,no_adults, no_children,comment,status FROM guest where rowid={}'''.format(id)
     rows = cur.execute(sql)
     row = cur.fetchone()
-    sql = '''SELECT price FROM room where room_no="{}"'''.format(row[1])
-    rooms = cur.execute(sql)
-    room=cur.fetchone()
-    if not room:
-        message='Room {} does not exist'.format(row[1])
+    if not check_room_exists(row[1]):
+        message='Room {} does not exist'.format(room_no)
         return template('templates/error_message.tpl',message=message)
     price = float(room[0].replace(',','.'))
     arrival = convert_date(row[9])

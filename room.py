@@ -29,8 +29,17 @@ def rooms():
         rooms.append(row)
     return template('templates/rooms.tpl', rooms=rooms)
 
+
+@route('/copy_room/<id:int>')
+def copy_room(id):
+    sql = "INSERT INTO room (room_no,floor, category, beds, price, status) SELECT  'New room',\
+    floor, category, beds, price, 'Vacant' FROM room WHERE rowid={}".format(id)
+    cur.execute(sql)
+    con.commit()
+    redirect('/rooms')
+
 @route('/delete_room/<id:int>')
-def delete_guest(id):
+def delete_room(id):
     sql='DELETE from room where rowid={}'.format(id)
     cur.execute(sql)
     con.commit()

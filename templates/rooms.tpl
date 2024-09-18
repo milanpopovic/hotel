@@ -44,6 +44,7 @@ function SelectAction(dropdown)
     //alert('The option value is "' + option_value + '"\nand the text is "' + option_text + '"');
     switch(option_value){
       case 'edit': location.href="/edit_room/"+SelectedRow;break;
+      case 'copy': location.href="/copy_room/"+SelectedRow;break;
       case 'delete': location.href="/delete_room/"+SelectedRow;break;
       default: break;
     }
@@ -61,12 +62,13 @@ function ToggleAction() {
 }
 </script>
 <div class="container"style="margin-top:20" >
-<h3><a href="javascript:history.back()"><b> &#127968; </b></a>Rooms</h3>
+<h3><a href="/admin"><b> &#127968; </b></a>Rooms</h3>
 <a class="button" href="/new_room"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
     <option value="">Actions</option>
     <option value="edit">View/Edit</option>
+    <option value="copy">Copy</option>
     <option value="delete">Delete</option>
    </select>
    </span>

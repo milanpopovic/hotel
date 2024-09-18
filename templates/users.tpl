@@ -91,7 +91,7 @@ function closeForm() {
 }
 </script>
 <div class="container"style="margin-top:20">
-<h3><a href="javascript:history.back()"><b> &#127968; </b></a> Users</h3>
+<h3><a href="javascript:location.href='/admin'"><b> &#127968; </b></a> Users</h3>
 <a class="button" href="/new_user"><span class="pln"> New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
