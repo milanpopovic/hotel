@@ -25,6 +25,17 @@
 </div>
 <script>
 function validateData() {
+  const today = new Date();
+  const from_date = new Date(document.getElementById("arrival_date").value);
+  const to_date = new Date(document.getElementById("departure_date").value);
+  if (from_date < today) {
+     alert('Arrival date must be greater than today!');
+     return false;
+  }
+  if (from_date > to_date) {
+     alert('Departure date must be greater or equal to arrival!');
+     return false;
+  }
   if (isEmpty(document.getElementById('arrival_date').value.trim())) {
     alert('Arrival date is required!');
     return false;
