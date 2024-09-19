@@ -10,6 +10,10 @@ cur = con.cursor()
 def new_guest():
     return template('templates/new_guest.tpl')
 
+@route('/room_reservation/<room_no>/<arrival_date>/<departure_date>')
+def room_reservation(room_no,arrival_date,departure_date):
+    return template('templates/room_reservation.tpl',room_no=room_no,arrival_date=arrival_date,departure_date=departure_date)
+
 @route('/edit_guest/<id:int>')
 def edit_guest(id):
     sql = '''SELECT rowid,room_no,first_name,last_name,phone,email, city,address,country,arrival_date,

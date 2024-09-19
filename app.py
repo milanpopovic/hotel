@@ -207,6 +207,11 @@ def guest_search(text):
     last_name  || phone || email || city || country || arrival_date || departure_date || status || comment like '%{}%' ORDER BY room_no".format(text)
     rows = cur.execute(sql)
     return template('templates/guests.tpl', title="Search results", guests=rows)
+
+@route('/find_free_room')
+def find_free_room():
     
+    return template('templates/search_room.tpl')
+                    
 read_setup()   
 run(host='0.0.0.0', port=8000)

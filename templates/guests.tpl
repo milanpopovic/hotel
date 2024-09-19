@@ -37,11 +37,13 @@
     // Your code to make something happen.
     var option_value = dropdown.options[dropdown.selectedIndex].value;
     var option_text = dropdown.options[dropdown.selectedIndex].text;
-
-    if(!SelectedRow && option_value !== "import"){ 
+  
+    if(!SelectedRow){ 
+        alert("Select a room");
         dropdown.selectedIndex = 0;
         return;
     }
+  
     //alert('The option value is "' + option_value + '"\nand the text is "' + option_text + '"')
     switch(option_value){
       case 'edit': location.href="/edit_guest/"+SelectedRow;break;
@@ -89,13 +91,15 @@ function Search(){
    location.href = "/guest_search/"+encodeURIComponent(text);
 }
 </script>
+   % visible = 'hidden' if title =='Reservation' else ''
    <div class="container" style="margin-top:20">
    <h3><a href="/"><b> &#127968; </b></a>{{title}}&nbsp;&nbsp;</h3>
-   <a class="button" href="/new_guest"><span class="pln">New</span></a> 
+   <!--<a class="button" href="/new_guest"><span class="pln">New</span></a> -->
+   <a class="button" href="/find_free_room"><span class="pln">New</span></a>
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a></span> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
     <option value="" selected>Action</option>
-    <optgroup label="Check out">
+    <optgroup label="Check out" {{visible}}>
       <option value="invoice">Invoice</option>
     </optgroup>
     <optgroup label="Change data">

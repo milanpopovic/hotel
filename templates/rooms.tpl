@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../static/css/milligram.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css" integrity="sha512-xiunq9hpKsIcz42zt0o2vCo34xV0j6Ny8hgEylN3XBglZDtTZ2nwnqF/Z/TTCc18sGdvCjbFInNd++6q3J0N6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script>
 var SelectedRow = "";
 var fontColor = "";
@@ -33,19 +33,23 @@ function getSelectedRow() {
 
 function SelectAction(dropdown)
 {
-    if(!SelectedRow){ 
-        alert("Select a room");
-        dropdown.selectedIndex = 0;
-        return;
-    }
     // Your code to make something happen.
     var option_value = dropdown.options[dropdown.selectedIndex].value;
     var option_text = dropdown.options[dropdown.selectedIndex].text;
     //alert('The option value is "' + option_value + '"\nand the text is "' + option_text + '"');
+    
+    
+    if(!SelectedRow  && option_value != 'find'){ 
+        alert("Select a room");
+        dropdown.selectedIndex = 0;
+        return;
+    }
+    
     switch(option_value){
       case 'edit': location.href="/edit_room/"+SelectedRow;break;
       case 'copy': location.href="/copy_room/"+SelectedRow;break;
       case 'delete': location.href="/delete_room/"+SelectedRow;break;
+      case 'find': location.href="/find_free_room";break;
       default: break;
     }
     dropdown.selectedIndex = 0;
@@ -70,6 +74,7 @@ function ToggleAction() {
     <option value="edit">View/Edit</option>
     <option value="copy">Copy</option>
     <option value="delete">Delete</option>
+    <option value="find">Find free</option>
    </select>
    </span>
   <table id="mytable">
