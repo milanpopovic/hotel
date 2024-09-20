@@ -180,8 +180,7 @@ def guest_search(text):
 
 @route('/find_free_room')
 def find_free_room():
-    
-    return template('templates/search_room.tpl')
+    return template('templates/search_room.tpl',rooms=[],arrival_date='',departure_date='',beds='')
                     
 read_setup()   
 run(host='0.0.0.0', port=8000)

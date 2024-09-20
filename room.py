@@ -48,7 +48,7 @@ def free_rooms(from_date1,to_date1, beds):
     for row in cur.execute(sql):
         if row[1] not in taken_rooms:
             free_rooms.append(row)
-    return template('templates/free_rooms.tpl', rooms=free_rooms,arrival_date=from_date1, departure_date=to_date1)
+    return template('templates/search_room.tpl',rooms=free_rooms,arrival_date=from_date1,departure_date=to_date1,beds=beds)
 
 
 @route('/copy_room/<id:int>')
