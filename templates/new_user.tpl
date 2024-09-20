@@ -18,7 +18,7 @@
       <option value="active">active</option>
       <option value="blocked">blocked</option>
     </select>
-    <input class="button-primary" type="submit" value="Send">
+    <input class="button-primary" type="submit" value="Save">
     <input type="button" value="Cancel" onclick="history.back()"/>
   </fieldset>
 </form>

@@ -1,11 +1,28 @@
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
-<div class="container">
+<div class="container" style="margin-top:20;">
+<div class='row'>
+    <div><h3><a href="/"><b> &#127968; </b></a>{{status}} guest: {{first_name}} {{last_name}}</h3></div>
+</div>
+<style>
+input, option, select{
+  font-size:16px;
+  color: gray;
+}
+</style>
+<div class='row'>
+    <div style="padding-bottom: 18px;">
+	      <input name="skip_Submit" value="Save" type="submit" class="button button-outline"/>
+	      <button onclick="location.href='/invoice/{{rowid}}'" class="button button-outline">Invoice</button>
+	      <button onclick="SendEmail({{rowid}})" class="button button-outline">Send email</button>
+	      <button onclick="SendSms({{rowid}})" class="button button-outline">Send SMS</button>
+	      <button onclick="location.href='/delete_guest/{{rowid}}'" class="button button-outline">Delete</button>
+    </div>
+</div>
 
-<form method="post" action="/update_guest" onSubmit="return validateForm();">
-<div class="container">
-        <div style="padding-bottom: 18px;font-size : 24px;">View/Edit Guest</div>
+<div class="row">
+        <form method="post" action="/update_guest" onSubmit="return validateForm();">
         <div class='row'>
             <div class='column' column-50">
                   <div style="display:none">
@@ -67,15 +84,24 @@
                   </div>
               </div>
           </div>
-          <div class='row'>
-              <div style="padding-bottom: 18px;">
-	              <input name="skip_Submit" value="Submit" type="submit"/>
-	              <input type="button" value="Cancel" onclick="history.back()"/>
-              </div>
-          </div>
+          
         </div>
     </div>
 </form>
+</div>
+
+<!-- The form -->
+<div class="form-popup" id="myForm">
+  <form action="/send_mail" method="POST" class="form-container">
+    <label for="to"><b>To: </b></label><input type="text" placeholder="Enter Recipient" name="to" id="to_guest">
+    <label for="subject"><b>Subject</b></label>
+    <input type="text" placeholder="Enter Subject" name="subject" required>
+    <label for="psw"><b>Message</b></label>
+    <textarea id="msg" name="msg"  style="max-width : 600px;height: auto; background: white;" rows="8" class="form-control"></textarea>
+    <input type="text" name="who" style="display:none" value="guest">
+    <input type="text" name="id" id="id" style="display:none">
+    <button type="submit" >Send</button>
+    <button type="button" onclick="closeForm()">Cancel</button>
 </div>
 <script type="text/javascript">
       function validateForm() {
@@ -127,5 +153,64 @@
           element.value = valueToSelect;
       }
       selectElement('status', '{{status}}');
+</script>
+
+
+<style>
+{box-sizing: border-box;}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 20;
+  left:35%;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 500px;
+  padding: 10px;
+  background-color: #f1f1f1; /*white;*/
+}
+
+/* Full-width input fields */
+.form-container input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: white; /*#f1f1f1;*/
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+</style>
+<script>
+  function SendEmail(id){
+    openForm();
+    document.getElementById("to_guest").value = "{{email}}"
+    document.getElementById("id").value = {{rowid}}
+  }
+
+  function SendSms(id){
+    let message = prompt("Please enter your message");
+    if (message)alert("Send SMS message: "+message+" to userid:"+id+" not implemented");
+  }
+
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
 </script>
 

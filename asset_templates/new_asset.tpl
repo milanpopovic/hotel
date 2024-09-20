@@ -20,7 +20,7 @@
       <option value="Repairing">Repairing</option>
       <option value="Out of duty">Out of duty</option>
     </select>
-    <input class="button-primary" type="submit" value="Send">
+    <input class="button-primary" type="submit" value="Save">
     <input type="button" value="Cancel" onclick="history.back()"/>
   </fieldset>
 </form>
