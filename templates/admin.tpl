@@ -1,4 +1,4 @@
-  <div class="container">
+  <div class="container"style="margin-top:20;" >
 	  <div class="row">
 	  	% include('templates/header.tpl',page_title='Hotel Administration')
 	  </div>

@@ -1,9 +1,10 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
 <div class="container" style="margin-top:20;">
 <div class='row'>
-    <div><h3><a href="/"><b> &#127968; </b></a>{{status}} guest: {{first_name}} {{last_name}}</h3></div>
+    <div><h3><a href="/"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;{{status}} guest: {{first_name}} {{last_name}}</h3></div>
 </div>
 <style>
 input, option, select{

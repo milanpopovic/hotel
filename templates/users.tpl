@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
 <style>
 .hidetext { -webkit-text-security: disc; /* Default */ }
@@ -91,7 +92,7 @@ function closeForm() {
 }
 </script>
 <div class="container"style="margin-top:20">
-<h3><a href="javascript:location.href='/admin'"><b> &#127968; </b></a> Users</h3>
+<h3><a href="javascript:location.href='/admin'"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a> Users</h3>
 <a class="button" href="/new_user"><span class="pln"> New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >

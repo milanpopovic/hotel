@@ -1,10 +1,11 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
 <div style="padding-bottom: 18px;font-size : 24px;margin-top:20;">New guest</div>
     <form method="post" action="/save_guest" onSubmit="return validateForm();">
     <div class="container" >
-        <div><h3><a href="/"><b> &#127968; </b></a>Guest: New</h3></div>
+        <div><h3><a href="/"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>Guest: New</h3></div>
         <div class='row'>
               <div style="padding-bottom: 18px;">
 	              <input name="skip_Submit" value="Save" type="submit"/>

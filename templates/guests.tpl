@@ -18,7 +18,7 @@ function Search(){
    % visible = 'hidden' if title =='Reservation' else ''
    % hide = 'display:none;' if title != 'Reservation' else ''
    <div class="container" style="margin-top:20;">
-   <div><h3><a href="/"><b> &#127968; </b></a>{{title}}&nbsp;&nbsp;</h3></div>
+   <div><h3><a href="/"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;{{title}}</h3></div>
    <div><a href="/find_free_room" class="button button-outline" style="{{hide}}" >New Guest</a>
    <input type="text" placeholder="Search ..." id="search-text" name="search-text" style="max-width:800;" onchange="Search()" >
    </div>

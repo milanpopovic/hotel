@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
 <div class="container">
 <form method="post" action="/save_room" onSubmit="return validateForm();">

@@ -1,8 +1,9 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css" integrity="sha512-xiunq9hpKsIcz42zt0o2vCo34xV0j6Ny8hgEylN3XBglZDtTZ2nwnqF/Z/TTCc18sGdvCjbFInNd++6q3J0N6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
  <div class="container" style="margin-top:20;">
-        <div><h3><a href="/guests/Reservation"><b> &#127968; </b></a>Find room&nbsp;&nbsp;</h3></div>
+        <div><h3><a href="/guests/Reservation"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>Find room&nbsp;&nbsp;</h3></div>
         <div class='row'>
                  <!-- <div style="padding-bottom: 18px;">Search<span style="color: red;"> *</span><br/>-->
                   <div></br>
