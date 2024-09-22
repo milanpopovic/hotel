@@ -29,6 +29,10 @@ def rooms():
         rooms.append(row)
     return template('templates/rooms.tpl', rooms=rooms)
 
+@route('/find_free_room')
+def find_free_room():
+    return template('templates/search_room.tpl',rooms=[],arrival_date='',departure_date='',beds='')
+
 @route('/free_rooms/<from_date1>/<to_date1>/<beds>')
 def free_rooms(from_date1,to_date1, beds):
     t1start = datetime.datetime.strptime(from_date1, '%a %b %d %Y')

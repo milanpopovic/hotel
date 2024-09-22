@@ -14,6 +14,13 @@ def new_guest():
 def room_reservation(room_no,arrival_date,departure_date):
     return template('templates/room_reservation.tpl',room_no=room_no,arrival_date=arrival_date,departure_date=departure_date)
 
+@route('/guest_search/<text>/<status>')
+def guest_search(text,status):
+    sql = "SELECT rowid,room_no,first_name,last_name,  phone, email,city,address,country,arrival_date,departure_date,no_adults, no_children,comment,status  FROM guest where room_no || first_name ||\
+    last_name  || phone || email || city || country || arrival_date || departure_date like '%{}%' and status = '{}' ORDER BY room_no".format(text,status)
+    rows = cur.execute(sql)
+    return template('templates/guests.tpl', title="Search results", guests=rows)
+
 @route('/edit_guest/<id:int>')
 def edit_guest(id):
     sql = '''SELECT rowid,room_no,first_name,last_name,phone,email, city,address,country,arrival_date,
@@ -81,12 +88,12 @@ def delete_guest(id):
     sql='DELETE from guest where rowid={}'.format(id)
     cur.execute(sql)
     con.commit()
-    redirect('/guests/Checked-in')
+    redirect('/guests/Reservation')
 
 def all_guests(status):
     guests = []
     sql = '''SELECT rowid,room_no,first_name,last_name,  phone, email,city,address,country,arrival_date,departure_date,
-            no_adults, no_children,comment,status  FROM guest where status="{}" ORDER BY room_no'''.format(status)
+            no_adults, no_children,comment,status  FROM guest where status="{}" ORDER BY room_no,arrival_date'''.format(status)
     rows = cur.execute(sql)
     for row in rows: 
         guests.append(row)
@@ -160,15 +167,32 @@ def invoices():
 def reservations():
     return template('templates/guests.tpl', guests=all_guests('Reservations'))
 
+import random
+from datetime import date
+from dateutil.relativedelta import relativedelta
+
 @route('/booking_import')
 def booking_import():
-    f=open('contacts.csv')
+    f=open('guests.csv')
     guests = f.readlines()
     for guest in guests:
+        from_now = random.randint(1,120) # in days
+        no_days = random.randint(1,5) # stay duration in days
+        arrival_date = date.today()-relativedelta(days=60) + relativedelta(days=from_now)
+        departure_date = arrival_date + relativedelta(days=no_days)
+        arrival_date = arrival_date.strftime("%a %b %d %Y")
+        departure_date = departure_date.strftime("%a %b %d %Y")
+        no_adults = random.randint(1,3)
+        no_children = random.randint(1,2)
+        status=random.choice(['Reservation','Checked-in','Checked-out'])
+        room_no = random.choice(['100', '101','102','103','104','105','106','001','002','003','200','201','202','203','204','205','206'])
         name,phone,email,city,country = guest.split(',')
         name = name.split()
-        sql='''INSERT into guest (first_name,last_name,phone,email,city,country,status) values("{}","{}","{}","{}","{}","{}","Reservation");'''.format(name[0],name[1],phone,email,city,country)
+        sql='''INSERT into guest (room_no,first_name,last_name,phone,email,city,country,status,arrival_date,departure_date,no_adults,no_children)
+values("{}","{}","{}","{}","{}","{}","{}","{}","{}","{}","{}",{});'''.format(room_no,name[0],name[1],phone,email,city,country,status,arrival_date,departure_date,no_adults,no_children)
+        print(sql)
         cur.execute(sql)
         f.close()
     con.commit()
-    return template('templates/guests.tpl', guests=all_guests('Reservations'))
+    redirect('/guests/Reservation')    
+    #return template('templates/guests.tpl', guests=all_guests('Reservations'))

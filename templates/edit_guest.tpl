@@ -14,7 +14,8 @@ input, option, select{
 </style>
 <div class='row'>
     <div style="padding-bottom: 18px;">
-	      <input name="skip_Submit" value="Save" type="submit" class="button button-outline"/>
+        <button type="submit" form="guest_form" class="button button-outline">Save</button>
+	      <!--<input name="Submit" value="Submit" type="submit" class="button button-outline"/>-->
 	      <button onclick="location.href='/invoice/{{rowid}}'" class="button button-outline">Invoice</button>
 	      <button onclick="SendEmail({{rowid}})" class="button button-outline">Send email</button>
 	      <button onclick="SendSms({{rowid}})" class="button button-outline">Send SMS</button>
@@ -23,7 +24,7 @@ input, option, select{
 </div>
 
 <div class="row">
-        <form method="post" action="/update_guest" onSubmit="return validateForm();">
+        <form method="post" id="guest_form" action="/update_guest" onSubmit="return validateForm();">
         <div class='row'>
             <div class='column' column-50">
                   <div style="display:none">
@@ -40,7 +41,7 @@ input, option, select{
                   <div style=" margin-left: 0; margin-right: 1%; width: 49%;">Room number<span style="color:red;"> *</span><br/>
 	                  <input type="text" id="room_no" name="room_no" value="{{room_no}}" style="max-width: 30%;" class="form-control"/>
                   </div>
-                  
+                  </br>
                   <div style="display: flex; padding-bottom: 18px;max-width : 450px;">
 	                  <div style=" margin-left: 0; margin-right: 1%; width: 49%;">First name<span style="color: red;"> *</span><br/>
 		                  <input type="text" id="first_name" name="first_name" value="{{first_name}}" style="max-width: 100%;" class="form-control"/>
@@ -85,7 +86,6 @@ input, option, select{
                   </div>
               </div>
           </div>
-          
         </div>
     </div>
 </form>

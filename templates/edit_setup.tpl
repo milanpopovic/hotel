@@ -37,7 +37,7 @@
   </div>
   <div class="row">
     <fieldset>
-	   <input class="button-primary" type="submit" value="Send">
+	   <input class="button-primary" type="submit" value="Save">
 	   <input type="button" value="Cancel" onclick="history.back()"/>
 	</fieldset>
   </div>

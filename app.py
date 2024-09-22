@@ -40,6 +40,9 @@ def logout():
     #return "You're no longer logged in"
     #abort(401, "You're no longer logged in")
 
+def verify(username, password):
+    return cur.execute("SELECT username,password from user where username='{}' and password='{}'".format(username,password))
+                       
 @route('/')
 @route('/index')
 #@auth_basic(is_authenticated_user)
@@ -171,16 +174,6 @@ def send_mail():
     else:
         redirect('/users')
 
-@route('/guest_search/<text>')
-def guest_search(text):
-    sql = "SELECT rowid,room_no,first_name,last_name,  phone, email,city,address,country,arrival_date,departure_date,no_adults, no_children,comment,status  FROM guest where room_no || first_name ||\
-    last_name  || phone || email || city || country || arrival_date || departure_date || status || comment like '%{}%' ORDER BY room_no".format(text)
-    rows = cur.execute(sql)
-    return template('templates/guests.tpl', title="Search results", guests=rows)
-
-@route('/find_free_room')
-def find_free_room():
-    return template('templates/search_room.tpl',rooms=[],arrival_date='',departure_date='',beds='')
-                    
+                  
 read_setup()   
 run(host='0.0.0.0', port=8000)

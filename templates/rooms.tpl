@@ -67,7 +67,7 @@ function ToggleAction() {
 }
 </script>
 <div class="container"style="margin-top:20" >
-<h3><a href="/admin"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>Rooms</h3>
+<h3><a href="/admin"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;Rooms</h3>
 <a class="button" href="/new_room"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >

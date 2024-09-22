@@ -3,7 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
  <div class="container" style="margin-top:20;">
-        <div><h3><a href="/guests/Reservation"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>Find room&nbsp;&nbsp;</h3></div>
+        <div><h3><a href="/guests/Reservation"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;Find room</h3></div>
         <div class='row'>
                  <!-- <div style="padding-bottom: 18px;">Search<span style="color: red;"> *</span><br/>-->
                   <div></br>
