@@ -47,7 +47,7 @@ def verify(username, password):
 @route('/index')
 #@auth_basic(is_authenticated_user)
 def index():
-    return template('templates/index.html',hotel_name=hotel['name'])
+    return template('index.html',hotel_name=hotel['name'])
 
 @route('/invoice/<id>')
 def invoice(id):
@@ -87,7 +87,7 @@ def static(path):
 
 @route('/admin')
 def admin():
-    return template('templates/admin.tpl')
+    return template('templates/admin.tpl',hotel_name=hotel['name'],)
 
 @route('/create_database/<name>')
 def create_db(name):

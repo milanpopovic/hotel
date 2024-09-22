@@ -1,7 +1,7 @@
   % include('templates/header.tpl',page_title='')
   <div class="container">
   <div class="row">
-    <div><h1>Hotel {{hotel_name}}</h1></div>
+    <div><h1><span data-i18n="welcome"></span> Hotel {{hotel_name}} - <span data-i18n="reception"></span></h1></div>
   </div>
   <div class="row">
   % include('templates/navigation.tpl')
@@ -28,8 +28,8 @@
   </div>
   </div>
  
-  <script>
-ImageSwitch=new Array();
+<script>
+    ImageSwitch=new Array();
     ImageSwitch[0]='../static/img/hotel1.jpg';
     ImageSwitch[1]='../static/img/hotel2.jpg';
     ImageSwitch[2]='../static/img/hotel3.jpg';
@@ -43,7 +43,6 @@ ImageSwitch=new Array();
     function swapImage() 
     {
         r = Math.round(Math.random()*8);
-        console.log(r);
         document.getElementById("theImage").setAttribute("src", ImageSwitch[r])
     }
     swapImage();
