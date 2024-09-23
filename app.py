@@ -42,12 +42,36 @@ def logout():
 
 def verify(username, password):
     return cur.execute("SELECT username,password from user where username='{}' and password='{}'".format(username,password))
+
+def get_hotel_data():
+    guests = []
+    sql = '''SELECT status FROM guest'''
+    rows = cur.execute(sql)
+    checked_in = 0;
+    reservations = 0;
+    for row in rows:
+        if row[0] == 'Reservation':
+            reservations += 1
+        elif row[0] == 'Checked-in':
+            checked_in +=1
+    return (checked_in,reservations)
+##    rooms =[0,0,0]
+##    sql = '''SELECT beds from room'''
+##    rows = cur.execute(sql)
+##    for row in rows:
+##        beds = int(row[0])
+##        rooms[beds-1] += 1
+##    print(checked_in, reservations)
+##    print(rooms)
+##      
+    
                        
 @route('/')
 @route('/index')
 #@auth_basic(is_authenticated_user)
 def index():
-    return template('index.html',hotel_name=hotel['name'])
+    checked_in, reservations = get_hotel_data()
+    return template('index.html',hotel_name=hotel['name'], checked_in=checked_in, reservations=reservations)
 
 @route('/invoice/<id>')
 def invoice(id):
