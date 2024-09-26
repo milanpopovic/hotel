@@ -3,6 +3,7 @@
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             element.textContent = langData[key];
+            console.log(key, element.textContent);
         });
     }
     
@@ -13,7 +14,7 @@
     
     // Function to fetch language data
     async function fetchLanguageData(lang) {
-        const response = await fetch(`static/languages/${lang}.json`);
+        const response = await fetch(`http://localhost:8000/static/languages/${lang}.json`);
         return response.json();
     }
     

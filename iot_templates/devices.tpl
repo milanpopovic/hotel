@@ -1,5 +1,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="../static/css/milligram.min.css" />
+<script src="/static/js/main.js"></script>
 <style>
 .hidetext { -webkit-text-security: disc; /* Default */ }
 </style>
@@ -67,7 +68,7 @@ function ToggleAction() {
 </script>
 <!--<div style="margin-left:10px;margin-top:10px">-->
 <div class="container"style="margin-top:20" >
-<h3><a href="/admin"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp; IoT Devices</h3>
+<h3><a href="/admin"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp; <span data-i18n="iot"></span></h3>
 <a class="button" href="/new_device"><span class="pln"> New</span></a> 
    <span class="pln"><a href="/">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >

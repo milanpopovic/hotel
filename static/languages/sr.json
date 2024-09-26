@@ -2,15 +2,15 @@
     "checked-in": "Prijavljeni",
     "checked-out": "Odjavljeni",
     "reservations": "Rezervacije",
-    "administration": "Administracija",
-    "logout": "Odjava",
+    "reservation": "Rezervacije",
+    "administration": "Uprava",
+    "logout": "Odjavi se",
     "reception":"Recepcija",
     "rooms":"Sobe",
-    "inventory":"Mobilijar",
-    "iot":"Iot",
+    "inventory":"Inventar",
+    "iot":"Automatika",
     "setup":"Hotel setup",
     "about":"O nama",
     "help":"Pomoć",
-    "welcome":"Dobrodošli u",
-    "reception":"Recepcija"
+    "welcome":"Dobrodošli u"
 }

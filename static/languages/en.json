@@ -2,15 +2,15 @@
     "checked-in": "Checked-in",
     "checked-out": "Checked-out",
     "reservations": "Reservations",
-    "administration": "Administration",
+    "reservation": "Reservations",
+    "administration": "Back Office",
     "logout": "Logout",
-    "reception":"Reception desk",
+    "reception":"Reception Desk",
     "rooms":"Rooms",
     "inventory":"Inventory",
-    "iot":"Iot",
-    "setup":"Hotel setup",
+    "iot":"Automation",
+    "setup":"Hotel Setup",
     "about":"About",
     "help":"Help",
-    "welcome":"Welcome to",
-    "reception":"Reception desk"
+    "welcome":"Welcome to"
 }

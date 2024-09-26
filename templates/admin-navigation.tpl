@@ -10,6 +10,7 @@
 			<li class="navigation_item"><a href = '/help'><span data-i18n="help"></span></a></li>
 			<li class="navigation_item"><a href = '/' onclick="changeLanguage('en')">En</a></li>
 		    <li class="navigation_item"><a href = '/' onclick="changeLanguage('sr')">Sr</a></li>
-			<li class="navigation_item"><a href = '/logout'>Logout</a></li>
+			<li class="navigation_item"><a href = '/logout'><span data-i18n="logout"></span></a></li>
 		</ul>
 	</nav>
+  
