@@ -14,7 +14,7 @@
     
     // Function to fetch language data
     async function fetchLanguageData(lang) {
-        const response = await fetch(`http://localhost:8000/static/languages/${lang}.json`);
+        const response = await fetch(`/static/languages/${lang}.json`);
         return response.json();
     }
     

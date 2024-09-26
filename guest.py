@@ -101,7 +101,7 @@ def all_guests(status):
 
 @route('/guests/<status>')
 def get_all_guests(status):
-    return template('templates/guests.tpl', title=status.lower(), guests=all_guests(status))
+    return template('templates/guests.tpl', title=status, guests=all_guests(status))
 
 @route('/checkin/<id>')
 def checkin(id):
