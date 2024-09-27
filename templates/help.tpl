@@ -1,7 +1,7 @@
- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="../static/css/milligram.min.css" />
+% include('templates/header.tpl',page_title='')
 <div class="container" style="margin-top:100">
-<h3 style="display:inline;"><a href="javascript:history.back()"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;Help&nbsp;&nbsp;</h3>
+<h3 style="display:inline;"><a href="javascript:history.back()">
+<i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;<span data-i18n="help"></span></h3><br/><br/>
 <div style="margin-top:20">
 <p>Prerequisite: Python3</p>
 <ul>

@@ -1,5 +1,4 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css" integrity="sha512-xiunq9hpKsIcz42zt0o2vCo34xV0j6Ny8hgEylN3XBglZDtTZ2nwnqF/Z/TTCc18sGdvCjbFInNd++6q3J0N6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+% include('templates/header.tpl',page_title='')
 <script>
 var SelectedRow = "";
 var fontColor = "";
@@ -67,15 +66,15 @@ function ToggleAction() {
 }
 </script>
 <div class="container"style="margin-top:20" >
-<h3><a href="/admin"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;Rooms</h3>
+<h3><a href="/admin"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;<span data-i18n="rooms"></span></h3>
 <a class="button" href="/new_room"><span class="pln">New</span></a> 
    <span class="pln"><a href="javascript:ToggleAction()">&#9881;</a> 
    <select id="action" onchange="SelectAction(this)" style="max-width : 150px;" >
     <option value="">Actions</option>
+    <option value="find">Find room</option>
     <option value="edit">View/Edit</option>
     <option value="copy">Copy</option>
     <option value="delete">Delete</option>
-    <option value="find">Find free</option>
    </select>
    </span>
   <table id="mytable">

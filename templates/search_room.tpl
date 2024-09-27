@@ -1,23 +1,22 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css" integrity="sha512-xiunq9hpKsIcz42zt0o2vCo34xV0j6Ny8hgEylN3XBglZDtTZ2nwnqF/Z/TTCc18sGdvCjbFInNd++6q3J0N6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+% include('templates/header.tpl',page_title='')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
  <div class="container" style="margin-top:20;">
-        <div><h3><a href="/guests/Reservation"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;Find room</h3></div>
+        <div><h3><a href="/guests/Reservation"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;<span data-i18n="findroom"></span></h3></div>
         <div class='row'>
                  <!-- <div style="padding-bottom: 18px;">Search<span style="color: red;"> *</span><br/>-->
                   <div></br>
                   <input name="Search" value="Search" type="submit" class="button button-outline form-conytrol"/>
                   </div>
-                  <div style="padding-bottom: 18px;">Arrival date<span style="color: red;"> *</span><br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="arrivaldate"></span><span style="color: red;"> *</span><br/>
                   <input type="text" id="arrival_date" name="arrival_date" style="max-width : 250px;" class="form-control" value="{{arrival_date}}"/>
                   </div>
                   <script type="text/javascript">new Pikaday({ field: document.getElementById('arrival_date') });</script>
-                  <div style="padding-bottom: 18px;">Departure date<span style="color: red;"> *</span><br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="departuredate"></span><span style="color: red;"> *</span><br/>
                   <input type="text" id="departure_date" name="departure_date" style="max-width : 250px;" class="form-control" value="{{departure_date}}"/>
                   </div>
                   <script type="text/javascript">new Pikaday({ field: document.getElementById('departure_date') });</script>
-                  <div style="padding-bottom: 18px;">Number of beds<span style="color: red;"> *</span><br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="bedsno"></span><span style="color: red;"> *</span><br/>
                   <input type="number" id="beds" name="beds" style="max-width : 250px;" class="form-control" value="{{beds}}"/>
                   </div>
         </div>
@@ -28,11 +27,11 @@
   <thead>
     <tr>
       <th style="display:none;">ID</th>
-      <th>Room No.</th>
-      <th>Floor</th>
-      <th>Category</th>
-      <th>Beds</th>
-      <th>Price</th>
+      <th><span data-i18n="roomno"></span></th>
+      <th><span data-i18n="floor"></span></th>
+      <th><span data-i18n="category"></span></th>
+      <th><span data-i18n="bedsno"></span></th>
+      <th><span data-i18n="price"></span></th>
     </tr>
   </thead>
   <tbody>
@@ -48,7 +47,7 @@
     % end
   </tbody>
   </table>
-  <a class="button" href="javascript:MakeReservation()"><span class="pln">Make reservation</span></a> 
+  <a class="button" href="javascript:MakeReservation()"><span class="pln"><span data-i18n="makereservation"></span></a> 
   % include('templates/footer.tpl')
 
 <script>

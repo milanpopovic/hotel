@@ -1,16 +1,69 @@
 {
+    "about":"O nama",
+    "administration": "Uprava",
+    "address":"Adresa",
+    "adultsno":"Broj odraslih",
+    "arrivaldate":"Datum dolaska",
+    
+    "bedsno":"Broj kreveta",
+    "booking":"Uvoz is Booking-a",
+    
+    "category":"Kategorija",
     "checked-in": "Prijavljeni",
     "checked-out": "Odjavljeni",
-    "reservations": "Rezervacije",
-    "reservation": "Rezervacije",
-    "administration": "Uprava",
-    "logout": "Odjavi se",
-    "reception":"Recepcija",
-    "rooms":"Sobe",
-    "inventory":"Inventar",
-    "iot":"Automatika",
-    "setup":"Hotel setup",
-    "about":"O nama",
+    "Checked-in": "Prijavljeni",
+    "Checked-out": "Odjavljeni",
+    "childrenno":"Broj dece",
+    "comment":"Komentar",
+    "country":"Zemlja",
+    "city":"Grad",
+     "currency":"DIN",
+    
+    "delete":"Briši",
+    "departuredate":"Datum odlaska",
+    
+    "edit":"Uredi",
+    "email":"Email",
+    
+    "findroom":"Nađi sobu",
+    "firstname":"Ime",
+    "floor":"Sprat",
+    
     "help":"Pomoć",
+    
+    "inventory":"Inventar",
+    "invoice":"Račun",
+    "iot":"Automatika",
+    "issuedate":"Datum izdavanja",
+    
+    "lastname":"Prezime",
+    "logout": "Odjavi se",
+    
+    "makereservation":"Napravi rezervaciju",
+    
+    "new":"Novi",
+    "newguest":"Novi gost",
+    "numberofnights":"Broj noćenja",
+    
+    "phone":"Mobilni",
+    "price":"Cena",
+    "pricepernight":"Cena po noćenju",
+    
+    "reception":"Recepcija",
+    "reservations": "Rezervacije",
+    "Reservation": "Rezervacije",
+    "reservation": "Rezervacije",
+    "roomno":"Broj sobe",
+    "rooms":"Sobe",
+    
+    "save":"Sačuvaj",
+    "sendemail":"Pošalji mejl",
+    "sendsms":"Pošalji SMS",
+    "setup":"Hotel setup",
+    
+    "terms":"Uslovi plaćanja",
+    "thanks":"HVALA ŠTO KORISTITE NAŠE USLUGE",
+    "total":"UKUPNO",
+    
     "welcome":"Dobrodošli u"
 }

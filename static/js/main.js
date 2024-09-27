@@ -3,7 +3,6 @@
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             element.textContent = langData[key];
-            console.log(key, element.textContent);
         });
     }
     

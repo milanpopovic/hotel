@@ -100,7 +100,7 @@ def all_guests(status):
     return guests
 
 @route('/guests/<status>')
-def get_all_guests(status):
+def guests(status):
     return template('templates/guests.tpl', title=status, guests=all_guests(status))
 
 @route('/checkin/<id>')

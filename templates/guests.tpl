@@ -1,27 +1,10 @@
-% include('templates/header.tpl',page_title='')
-
-<script>
-  function editGuest(row){
-     location.href="/edit_guest/"+row.cells[0].textContent;
-  }
-
-  function Search(){
-     text = document.getElementById("search-text").value;
-     location.href = "/guest_search/"+encodeURIComponent(text)+"/{{title}}";
-}
-
-const selectAllCheckboxes = () => {
-  const checkboxes = document.querySelectorAll('input[type=checkbox]');
-  let checked = true;
-  if (checkboxes[0].checked == false)  checked= false;
-  checkboxes.forEach((cb) => { cb.checked = checked; });
-}
-</script>
+ % include('templates/header.tpl',page_title='')
    % visible = 'hidden' if title =='Reservation' else ''
    % hide = 'display:none;' if title != 'Reservation' else ''
    <div  class="container" style="margin-top:20;">
-   <div><h3><a href="/"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;{{title}}</h3></div>
-   <div><a href="/find_free_room" class="button button-outline" style="{{hide}}" >New Guest</a><a href="/booking_import" class="button button-outline" style="{{hide}}" >Booking import</a>
+   <div><h3><a href="/"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;<span data-i18n="{{title}}"></span></h3></div>
+   <div><a href="/find_free_room" class="button button-outline" style="{{hide}}" >
+   <span data-i18n="newguest"></span></a>&nbsp;&nbsp;<a href="/booking_import" class="button button-outline" style="{{hide}}" ><span data-i18n="booking"></span></a>
    <input type="text" placeholder="Search ..." id="search-text" name="search-text" style="max-width:600;" onchange="Search()" >
    </div>
   <table id="mytable">
@@ -29,13 +12,13 @@ const selectAllCheckboxes = () => {
     <tr>
       <th style="display:none;">ID</th>
       <th><input type="checkbox" id="checkbox-0}"  onclick="selectAllCheckboxes()" /></th>
-      <th>Room No.</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Arrival date</th>
-      <th>Departure date</th>
+      <th><span data-i18n="roomno"></span></th>
+      <th><span data-i18n="firstname"></span></th>
+      <th><span data-i18n="lastname"></span></th>
+      <th><span data-i18n="arrivaldate"></span></th>
+      <th><span data-i18n="departuredate"></span></th>
       <th style="display:none;">Email</th>
-      <th>Comment</th>
+      <th><span data-i18n="comment"></span></th>
     </tr>
    </thead>
    <tbody>
@@ -110,6 +93,23 @@ const selectAllCheckboxes = () => {
   outline: none;
 }
 </style>
+<script>
+  function editGuest(row){
+     location.href="/edit_guest/"+row.cells[0].textContent;
+  }
+
+  function Search(){
+     text = document.getElementById("search-text").value;
+     location.href = "/guest_search/"+encodeURIComponent(text)+"/{{title}}";
+}
+
+const selectAllCheckboxes = () => {
+  const checkboxes = document.querySelectorAll('input[type=checkbox]');
+  let checked = true;
+  if (checkboxes[0].checked == false)  checked= false;
+  checkboxes.forEach((cb) => { cb.checked = checked; });
+}
+</script>
 <script>
   function SendEmail(id){
     openForm();

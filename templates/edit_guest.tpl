@@ -1,10 +1,9 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="../static/css/milligram.min.css" />
+% include('templates/header.tpl',page_title='')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/pikaday.min.js" type="text/javascript"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.4.0/css/pikaday.min.css" rel="stylesheet" type="text/css" />
 <div class="container" style="margin-top:20;">
 <div class='row'>
-    <div><h3><a href="/"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;{{status}} guest: {{first_name}} {{last_name}}</h3></div>
+    <div><h3><a href="/"><i class="material-icons" style="font-size:36px; vertical-align: middle;">home</i></a>&nbsp;&nbsp;<span data-i18n="edit">{{status}}</span> : {{first_name}} {{last_name}}</h3></div>
 </div>
 <style>
 input, option, select{
@@ -14,12 +13,12 @@ input, option, select{
 </style>
 <div class='row'>
     <div style="padding-bottom: 18px;">
-        <button type="submit" form="guest_form" class="button button-outline">Save</button>
+        <button type="submit" form="guest_form" class="button button-outline"><span data-i18n="save"></span></button>
 	      <!--<input name="Submit" value="Submit" type="submit" class="button button-outline"/>-->
-	      <button onclick="location.href='/invoice/{{rowid}}'" class="button button-outline">Invoice</button>
-	      <button onclick="SendEmail({{rowid}})" class="button button-outline">Send email</button>
-	      <button onclick="SendSms({{rowid}})" class="button button-outline">Send SMS</button>
-	      <button onclick="location.href='/delete_guest/{{rowid}}'" class="button button-outline">Delete</button>
+	      <button onclick="location.href='/invoice/{{rowid}}'" class="button button-outline"><span data-i18n="invoice"></span></button>
+	      <button onclick="SendEmail({{rowid}})" class="button button-outline"><span data-i18n="sendemail"></span></button>
+	      <button onclick="SendSms({{rowid}})" class="button button-outline"><span data-i18n="sendsms"></span></button>
+	      <button onclick="location.href='/delete_guest/{{rowid}}'" class="button button-outline"><span data-i18n="delete"></span></button>
     </div>
 </div>
 
@@ -38,50 +37,50 @@ input, option, select{
                         <option value="Reservation">Reservation</option>
                       </select>
                   </div>
-                  <div style=" margin-left: 0; margin-right: 1%; width: 49%;">Room number<span style="color:red;"> *</span><br/>
+                  <div style=" margin-left: 0; margin-right: 1%; width: 49%;"><span data-i18n="roomno"></span><span style="color:red;"> *</span><br/>
 	                  <input type="text" id="room_no" name="room_no" value="{{room_no}}" style="max-width: 30%;" class="form-control"/>
                   </div>
                   </br>
                   <div style="display: flex; padding-bottom: 18px;max-width : 450px;">
-	                  <div style=" margin-left: 0; margin-right: 1%; width: 49%;">First name<span style="color: red;"> *</span><br/>
+	                  <div style=" margin-left: 0; margin-right: 1%; width: 49%;"><span data-i18n="firstname"></span><span style="color: red;"> *</span><br/>
 		                  <input type="text" id="first_name" name="first_name" value="{{first_name}}" style="max-width: 100%;" class="form-control"/>
 	                  </div>
-	                  <div style=" margin-left: 1%; margin-right: 0; width: 49%;">Last name<span style="color: red;"> *</span><br/>
+	                  <div style=" margin-left: 1%; margin-right: 0; width: 49%;"><span data-i18n="lastname"></span><span style="color: red;"> *</span><br/>
 		                  <input type="text" id="last_name" name="last_name" value="{{last_name}}" style="max-width: 100%;" class="form-control"/>
 	                  </div>
                   </div>
-                  <div style="padding-bottom: 18px;">Arrival date<span style="color: red;"> *</span><br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="arrivaldate"></span><span style="color: red;"> *</span><br/>
                   <input type="text" id="arrival_date" name="arrival_date" value="{{arrival_date}}" style="max-width : 250px;" class="form-control"/>
                   </div>
                   <script type="text/javascript">new Pikaday({ field: document.getElementById('arrival_date') });</script>
-                  <div style="padding-bottom: 18px;">Departure date<span style="color: red;"> *</span><br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="departuredate"></span><span style="color: red;"> *</span><br/>
                   <input type="text" id="departure_date" name="departure_date" value="{{departure_date}}" style="max-width : 250px;" class="form-control"/>
                   </div>
                   <script type="text/javascript">new Pikaday({ field: document.getElementById('departure_date') });</script>
-                  <div style="padding-bottom: 18px;">Number of adults<span style="color: red;"> *</span><br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="adultsno"></span><span style="color: red;"> *</span><br/>
                   <input type="number" id="no_adults" name="no_adults" value="{{no_adults}}" style="max-width : 250px;" class="form-control"/>
                   </div>
-                  <div style="padding-bottom: 18px;">Number of children<br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="childrenno"></span><br/>
                   <input type="number" id="no_children" name="no_children" value="{{no_children}}" style="max-width : 250px;" class="form-control"/>
                   </div>
               </div>
               <div class='column'column-50" >
-                  <div style="padding-bottom: 18px;">City<span style="color: red;"> *</span><br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="city"></span><span style="color: red;"> *</span><br/>
                   <input type="text" id="city" name="city" value="{{city}}" style="max-width : 450px;" class="form-control"/>
                   </div>
-                  <div style="padding-bottom: 18px;">Address<span style="color: red;"> *</span><br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="address"></span><span style="color: red;"> *</span><br/>
                   <input type="text" id="address" name="address" value="{{address}}" style="max-width : 450px;" class="form-control"/>
                   </div>
-                  <div style="padding-bottom: 18px;">Country<span style="color: red;"> *</span><br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="country"></span><span style="color: red;"> *</span><br/>
                   <input type="text" id="country" name="country" value="{{country}}" style="max-width : 450px;" class="form-control"/>
                   </div>
-                  <div style="padding-bottom: 18px;">Phone<span style="color: red;"> *</span><br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="mobile"></span><span style="color: red;"> *</span><br/>
                   <input type="text" id="phone" name="phone" value="{{phone}}" style="max-width : 450px;" class="form-control"/>
                   </div>
-                  <div style="padding-bottom: 18px;">Email<span style="color: red;"> *</span><br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="email"></span><span style="color: red;"> *</span><br/>
                   <input type="text" id="email" name="email" value="{{email}}" style="max-width : 450px;" class="form-control"/>
                   </div>
-                  <div style="padding-bottom: 18px;">Questions / Comments<br/>
+                  <div style="padding-bottom: 18px;"><span data-i18n="comment"></span><br/>
                         <textarea id="comment" false name="comment"  style="max-width : 450px;height: auto;" rows="8" class="form-control">{{comment}}</textarea>
                   </div>
               </div>

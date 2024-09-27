@@ -1,16 +1,69 @@
 {
+    "about":"About",
+    "administration": "Back Office",
+    "address":"Address", 
+    "adultsno":"Adults No.",
+    "arrivaldate":"Arrival date", 
+    
+    "bedsno":"Number of beds",
+    "booking":"Import from Booking",
+    
+    "categoiry":"Category",
     "checked-in": "Checked-in",
     "checked-out": "Checked-out",
-    "reservations": "Reservations",
-    "reservation": "Reservations",
-    "administration": "Back Office",
-    "logout": "Logout",
-    "reception":"Reception Desk",
-    "rooms":"Rooms",
-    "inventory":"Inventory",
-    "iot":"Automation",
-    "setup":"Hotel Setup",
-    "about":"About",
+    "Checked-in": "Checked-in",
+    "Checked-out": "Checked-out",
+    "childrenno":"Chlidren No.",
+    "city":"City",
+    "comment":"Comment", 
+    "country":"Country", 
+    "currency":"USD",
+    
+    "delete":"Delete",
+    "departuredate":"Departure date",
+    
+    "edit":"Edit",
+    "email":"Email",
+     
+    "findroom":"Find room",
+    "firstname":"First name", 
+    "floor":"Floor",
+    
     "help":"Help",
-    "welcome":"Welcome to"
+    
+    "iot":"Automation",
+    "inventory":"Inventory",
+    "invoice":"Invoce",
+    "issuedate":"Issue date",
+    
+    "lastname":"Last name",
+    "logout": "Logout",
+    
+    "makereservation":"Make reservation",
+    
+    "new":"New",
+    "newguest":"New guest",
+    "numberofnights":"Number of nights",
+    
+    "phone":"Phone",  
+    "price":"Proce",
+    "pricepernight":"Price per night",
+    
+    "reception":"Reception Desk",
+    "reservations": "Reservations",
+    "Reservation": "Reservations",
+    "reservation": "Reservations",
+    "rooms":"Rooms",
+    "roomno":"Room number",
+    
+    "save":"Save",
+    "sendemail":"Send Email",
+    "sendsms":"Send SMS", 
+    "setup":"Hotel Setup",
+    
+    "terms":"Invoice terms",
+    "thanks":"THANK YOU FOR USING OUR SERVICES",
+    "total":"Total",
+   
+    "welcome":"Welcome to"   
 }
